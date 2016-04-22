@@ -1,4 +1,4 @@
-{
+var Data = {
   "pagination": {
     "object_count": 40,
     "page_number": 1,
@@ -627,13 +627,7 @@
       "subcategory_id": "3005",
       "format_id": "6",
       "resource_uri": "https://www.eventbriteapi.com/v3/events/24308745111/",
-      "logo": {
-        "id": "172046943",
-        "url": "https://upload.wikimedia.org/wikipedia/en/e/e9/Lion_Before_Storm_II-_Sitting_Profile.jpg",
-        "aspect_ratio": "2",
-        "edge_color": "#191412",
-        "edge_color_set": true
-      }
+      "logo": null
     },
     {
       "name": {
@@ -1521,13 +1515,7 @@
       "subcategory_id": "3011",
       "format_id": "6",
       "resource_uri": "https://www.eventbriteapi.com/v3/events/22483339273/",
-      "logo": {
-        "id": "1720469439",
-        "url": "https://upload.wikimedia.org/wikipedia/en/e/e9/Lion_Before_Storm_II-_Sitting_Profile.jpg",
-        "aspect_ratio": "2",
-        "edge_color": "#191412",
-        "edge_color_set": true
-      }
+      "logo": null
     },
     {
       "name": {
@@ -2111,3 +2099,21 @@
     }
   ]
 }
+
+var test = Data.events.map((event) => {
+  var count = 3;
+
+  if (event.logo === null) {
+    event.logo = {
+      "id": "19755054" + count,
+      "url": "https://upload.wikimedia.org/wikipedia/en/e/e9/Lion_Before_Storm_II-_Sitting_Profile.jpg",
+      "aspect_ratio": "2",
+      "edge_color": "#000000",
+      "edge_color_set": true
+    }
+  }
+  count++;
+  return event;
+})
+
+console.log(test)

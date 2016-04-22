@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import TopBar from '../components/topbar';
+import Event from '../components/event';
 
 export default class Landing extends Component {
   render() {
     return (
-      <div id="landing">
+      <div id="">
         <TopBar />
-        <div>
-          <h2>Landing Page</h2>
-          <p>Just testing for route implementation</p>
-        </div>
+        <Event />
       </div>
     )
   }
