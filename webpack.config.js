@@ -26,15 +26,17 @@ module.exports = {
       { test: path.join(__dirname, 'app'), loaders: ['react-hot', 'babel-loader'], exclude: /(node_modules|bower_components)/ },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.scss$/, loaders: ["style", "css", "sass"] },
-      { test: /\.css$/, loader: "style-loader!css-loader" }
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+      { test: /\.json$/, loaders: ['json-loader'] }
+
     ]
   },
   // For browser support
-  // postcss: function(webpack) {
-  //   return [
-  //     autoprefixer({browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']})
-  //   ]
-  // },
+  postcss: function(webpack) {
+    return [
+      autoprefixer({browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']})
+    ]
+  },
   // For use of relative paths in the browser
   sassLoader: {
     includePaths: [path.resolve(__dirname, "node_modules")]
