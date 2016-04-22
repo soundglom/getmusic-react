@@ -13,7 +13,7 @@ export default class Event extends Component {
     return <div id="events">
       {Data.events.map((event) => {
         return (
-          <div id={event.id} className="media-object stack-for-small">
+          <div key={event.id} className="media-object stack-for-small">
             <div className="media-object-section">
               <div className="thumbnail">
                 <img src={event.logo.url} />
