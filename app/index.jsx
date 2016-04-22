@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
-import { Router, Route, IndexRoute, browserHistory, hashHistory } from'react-router';
-
 import 'script!jquery'
 import foundation from 'foundation-sites';
-
 import './stylesheets/main.scss';
 
-import TopBar from './components/topbar';
-import Event from './components/event';
+import React, { Component } from 'react';
+
+// React router
+import { Router, Route, IndexRoute, browserHistory, hashHistory } from'react-router';
+
+// Redux dependencies
+import { Provider } from 'react-redux';
+
 import Landing from './containers/landing';
 import Events from './containers/events';
 

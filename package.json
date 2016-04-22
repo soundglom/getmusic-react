@@ -51,7 +51,9 @@
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-foundation": "^0.6.8",
+    "react-redux": "^4.4.5",
     "react-router": "^2.3.0",
+    "redux": "^3.5.1",
     "what-input": "^2.0.1"
   }
 }
