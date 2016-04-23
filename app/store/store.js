@@ -7,6 +7,7 @@ const SEARCH = 'SEARCH_FOR_EVENTS';
 const initialState = {
   search: ''
 }
+
 // Reducers
 const searchEventsReducer = (state = initialState, action) => {
   console.log('From game logic: ', action.type);
@@ -15,7 +16,7 @@ const searchEventsReducer = (state = initialState, action) => {
       
       let newState = {
         ...state,
-        searchEvents: action.value
+        searchEventsQuery: action.value
       }
       
       return newState;
@@ -28,7 +29,6 @@ const rootReducer = combineReducers({
 })
 
 const store = createStore(rootReducer);
-// const store = createStore(s);
 
 
 

@@ -16,7 +16,7 @@ const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 import Landing from './containers/landing';
 import Events from './containers/events';
-import { connector, store } from './reducers/store';
+import { connector, store } from './store/store';
 
 // let store = createStore(rootReducer)
 // const myRoutes = () => (
