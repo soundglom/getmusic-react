@@ -1,37 +1,57 @@
-import redux, { combineReducers } from 'redux';
-import { connect } from 'react-redux';
+import redux, { combineReducers, createStore } from 'redux';
+import reactRedux, { connect } from 'react-redux';
+// import { SEARCH } from '../actions/actions_types';
 
-import searchEvents from './search_reducer';
-
-// import Data from '!json!../../data';
-
-const events = Data.events;
+const SEARCH = 'SEARCH_FOR_EVENTS';
 
 const initialState = {
-  eventSearch: '',
-  // events
+  search: ''
+}
+// Reducers
+const searchEventsReducer = (state = initialState, action) => {
+  console.log('From game logic: ', action.type);
+  switch (action.type) {
+    case SEARCH:
+      
+      let newState = {
+        ...state,
+        searchEvents: action.value
+      }
+      
+      return newState;
+  }
+  return state;
 }
 
 const rootReducer = combineReducers({
-  searchEvents
+  searchEventsReducer
 })
+
+const store = createStore(rootReducer);
+// const store = createStore(s);
+
+
+
 
 // Redux props and action connectors
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
-    eventSearch: state.searchEvents,
+    search: state.searchEventsReducer,
     // events: state.events
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
+  // console.log(dispatch)
   return {
-    setEventSearch: (query) => {
-      dispatch({type: SET_EVENT_SEARCH, value: query})
+    searchEventsAction: (query) => {
+      dispatch({type: SEARCH, value: query})
     }
   }
 }
 
-const connector = reactRedux.connect(mapStateToProps, mapDispatchToProps)
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
-module.exports = { connector, rootReducer }
+module.exports = { connector, rootReducer, store }
+

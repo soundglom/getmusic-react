@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import Data from '!json!../../data';
 
-console.log(Data)
+// console.log(Data)
 
 export default class Event extends Component {
   constructor() {

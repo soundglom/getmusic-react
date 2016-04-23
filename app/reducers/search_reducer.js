@@ -1,10 +1,13 @@
+import { SEARCH } from '../actions/action_types';
+const initialState = {
+  eventSearch: '',
+  // events
+}
 
-const SET_SEARCH_TERM = 'setSearchTerm';
-
-export default (state = null, action) => {
+const searchEventsReducer = (state = initialState, action) => {
   console.log('From game logic: ', action.type);
   switch (action.type) {
-    case SET_EVENT_SEARCH:
+    case SEARCH_FOR_EVENTS:
       
       let newState = {
         ...state,
@@ -12,7 +15,7 @@ export default (state = null, action) => {
       }
       
       return newState;
-    default:
-      return state;
   }
+  return state;
 }
+
