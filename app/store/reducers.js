@@ -1,7 +1,7 @@
 import { SEARCH } from '../actions/action_types';
 import { events } from '!json!../../data';
 
-console.log(events)
+// console.log(events)
 
 const initialState = {
   searchEventsQuery: '',
@@ -9,7 +9,7 @@ const initialState = {
 }
 
 export const searchEventsReducer = (state = initialState, action) => {
-  console.log('From game logic: ', action.type);
+  // console.log('From game logic: ', action.type);
   switch (action.type) {
     case SEARCH:
       
