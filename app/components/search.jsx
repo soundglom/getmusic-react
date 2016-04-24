@@ -8,6 +8,7 @@ class Search extends Component {
     this.handleEventSearch = this.handleEventSearch.bind(this);
   }
   handleEventSearch(event) {
+    event.preventDefault();
     let searchForm = document.getElementById('event-search');
     console.log('Search form value: ', searchForm.value)
     console.log('Props from search: ', this.props)
