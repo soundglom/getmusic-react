@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { browserHistory } from 'react-router';
 import { connector } from '../store/store';
 
 class Search extends Component {
@@ -14,6 +14,8 @@ class Search extends Component {
     console.log('Props from search: ', this.props)
     this.props.searchEventsAction(searchForm.value);
     searchForm.value = '';
+    browserHistory.push('/events');
+
   }
   render() {
     return (

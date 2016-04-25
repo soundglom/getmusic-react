@@ -12,7 +12,7 @@ export const searchEventsReducer = (state = initialState, action) => {
   // console.log('From game logic: ', action.type);
   switch (action.type) {
     case SEARCH:
-
+      console.log('This works!')
       let newEvents = Object.assign([], state.allEvents)
  
       let searchedEvents = newEvents.filter((event) => {
