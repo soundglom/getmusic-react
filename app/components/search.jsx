@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import { searchEventsAction } from '../actions/actions';
-
-import { connector } from '../reducers/store';
+import { connector } from '../store/store';
 
 class Search extends Component {
   constructor(props) {
@@ -12,37 +8,31 @@ class Search extends Component {
     this.handleEventSearch = this.handleEventSearch.bind(this);
   }
   handleEventSearch(event) {
+    event.preventDefault();
+    let searchForm = document.getElementById('event-search');
+    console.log('Search form value: ', searchForm.value)
     console.log('Props from search: ', this.props)
-    this.props.searchEventsAction(event.target.value);
+    this.props.searchEventsAction(searchForm.value);
+    searchForm.value = '';
   }
   render() {
     return (
       <div className="top-bar-right">
-        <ul className="menu">
-          <li><input 
-            value={this.props.setEventSearch}
-            onChange={this.handleEventSearch} 
-            type="search" 
-            placeholder="Search" 
-          /></li>
-          <li><button type="button" className="button">Search</button></li>
-        </ul>
+        <form onSubmit={this.handleEventSearch}>
+          <ul className="menu">
+            <li><input 
+              id="event-search"
+              value={this.props.setEventSearch}
+               
+              type="search" 
+              placeholder="Search" 
+            /></li>
+            <li><button type="submit" className="button">Search</button></li>
+          </ul>
+        </form>
       </div>
     )
   }
 }
-
-// Map properties and actions to Redux reducer
-// function mapStateToProps(state) {
-//   return {
-//     search: state.searchEventsReducer
-//   }
-// }
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ searchEventsAction }, dispatch);
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 export default connector(Search)

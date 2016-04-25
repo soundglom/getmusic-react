@@ -5,7 +5,7 @@ const initialState = {
 }
 
 const searchEventsReducer = (state = initialState, action) => {
-  console.log('From game logic: ', action.type);
+  // console.log('From game logic: ', action.type);
   switch (action.type) {
     case SEARCH_FOR_EVENTS:
       
