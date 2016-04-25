@@ -31,7 +31,7 @@ const store = createStore(rootReducer);
 
 // Redux props and action connectors
 const mapStateToProps = (state) => {
-  console.log(state)
+  // console.log(state)
   return {
     search: state.searchEventsReducer,
     // events: state.events

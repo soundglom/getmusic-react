@@ -7,11 +7,14 @@ import Data from '!json!../../data';
 class Events extends Component {
   constructor(props) {
     super(props);
+  }
+  searchEvents() {
 
   }
   render() {
+    console.log('Props from events: ', this.props);
     let p = this.props.search.events;
-    console.log(p)
+
     return (
       <div id="events-view">
         <TopBar />
