@@ -2,24 +2,26 @@ import React, { Component } from 'react';
 import TopBar from '../components/topbar';
 import Event from '../components/event';
 import { connector } from '../store/store'
-import Data from '!json!../../data';
+// import Data from '!json!../../data';
 
 class Events extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      events: []
+    }    
   }
-  searchEvents() {
-
+  renderEvents(event, index) {
+      return <Event {...event} key={index} />
+    
   }
   render() {
-    console.log('Props from events: ', this.props);
-    let p = this.props.search.events;
 
     return (
       <div id="events-view">
         <TopBar />
         <div id="events-container">
-          {p.map((event, index) => <Event {...event} key={index} />)}
+          {this.props.search.events.map(this.renderEvents)}
         </div>
       </div>
     )
