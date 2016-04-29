@@ -1,25 +1,69 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var webpackMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
-var config = require('./webpack.config');
+var bodyParser = require('body-parser')
+var axios = require('axios')
 
+var devServer = require('./server/devserver')
+var prodServer = require('./server/prodserver')
+var apiUrl = require('./server/apis')
+var EVENTBRITE = process.env.EVENTBRITE
+
+var publicPath = path.resolve(__dirname, 'dist/');
 var development = process.env.NODE_ENV !== 'production';
 var port = development ? 3000 : process.env.PORT;
 
-var server = new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
-  hot: true,
-  inline: true,
-  historyApiFallback: true
+var app = express();
+
+var url = apiUrl + EVENTBRITE
+var eventData = [];
+
+axios.get(url)
+  .then((res) => {
+    res.data.events.forEach(event => {
+      eventData.push(event)
+    })
+  })
+
+app.use(express.static(publicPath));
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+
+if (development) {
+  var webpack = require('webpack');
+  var WebpackDevServer = require('webpack-dev-server');
+  var webpackDevMiddleware = require('webpack-dev-middleware');
+  var webpackHotMiddleware = require('webpack-hot-middleware');
+  var config = require('./webpack.config');
+  var compiler = webpack(config);
+
+  app.use(webpackDevMiddleware(compiler, {
+    hot: true,
+    filename: 'bundle.js',
+    publicPath: '/dist/',
+    stats: {
+      colors: true,
+    },
+    historyApiFallback: true,
+  }))
+
+  app.use(webpackHotMiddleware(compiler, {
+    log: console.log,
+    path: '/__webpack_hmr',
+    heartbeat: 10 * 1000,
+  }))
+}
+
+app.use('/api/data', (req, res, next) => {
+  res.send(eventData)
+})
+
+app.get('/', function (req, res, next) {
+
+  res.sendFile('/index.html', { root: __dirname });
 });
 
-server.listen(port, 'localhost', function (err, result) {
-  if (err) {
-    console.log(err);
-  }
+app.listen(port, function () {
 
-  console.log('Listening at localhost: ', port);
+  console.log('Server running on port ' + port);
 });

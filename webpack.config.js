@@ -5,8 +5,8 @@ var autoprefixer = require('autoprefixer');
 module.exports = {
   devtool: 'sourcemap',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000', // WebpackDevServer host and port
-    'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', // WebpackDevServer host and port
+    // 'webpack/hot/only-dev-server',
     './app/entry.jsx'
   ],
   output: {
@@ -19,7 +19,11 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
   ],
   module: {
     loaders: [
@@ -27,7 +31,7 @@ module.exports = {
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.scss$/, loaders: ["style", "css", "sass"] },
       { test: /\.css$/, loader: "style-loader!css-loader" },
-      { test: /\.json$/, loaders: ['json-loader'] }
+      // { test: /\.json$/, loaders: ['json-loader'] }
 
     ]
   },

@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Search from './search';
+import { connector } from '../store/store';
 
-export default class TopBar extends Component {
+class TopBar extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount() {
+    // this.props.fetchEvents();
+    
+  }
   render() {
+    // this.getEvents();
     return (
       <div className="top-bar" id="example-menu">
         <div className="top-bar-left">
@@ -11,7 +20,7 @@ export default class TopBar extends Component {
             <li className="menu-text">Site Title</li>            
             
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/events">All Events</Link></li>
+            <li ><Link to="/events" >All Events</Link></li>
           </ul>
         </div>
         <Search />
@@ -19,3 +28,5 @@ export default class TopBar extends Component {
     )
   }
 }
+
+export default connector(TopBar);

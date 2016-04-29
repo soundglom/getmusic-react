@@ -1,40 +1,53 @@
 import _ from 'lodash';
-import { SEARCH } from '../actions/action_types';
-import { events } from '!json!../../data';
+import { SEARCH, FETCH_EVENTS } from '../actions/action_types';
+import axios from 'axios';
+import { events } from '../../data';
 
 const initialState = {
   searchEventsQuery: '',
-  events: events,
-  allEvents: events
+  events: [],
+  allEvents: [],
+  present: false
 }
 
 export const searchEventsReducer = (state = initialState, action) => {
-  // console.log('From game logic: ', action.type);
+  console.log('From game logic: ', action.type);
   switch (action.type) {
     case SEARCH:
-      console.log('This works!')
       let newEvents = Object.assign([], state.allEvents)
  
       let searchedEvents = newEvents.filter((event) => {
         let queryTest = `${event.name.text} ${event.description.text}`.toUpperCase()
-                      .indexOf(action.value.toUpperCase());
+                      .indexOf(action.payload.toUpperCase());
         if (queryTest >= 0 ) return event 
       })      
 
       let newState = {
         allEvents: newEvents,
-        searchEventsQuery: action.value
+        searchEventsQuery: action.payload
       }
 
       newState.events = newState.searchEventsQuery ? searchedEvents : newEvents;
       
       return newState;
+    default:
+      return state;
   }
-  return state;
 }
 
 export const getEventsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case EVENTS:
+    case FETCH_EVENTS:
+      const newState = {...state}
+      console.log('got events', action.payload)
+      action.payload.data.forEach((event) => {
+        newState.events.push(event)
+        newState.allEvents.push(event)
+      })
+      newState.present = true
+
+      return state;
+    default: 
+      return state;
   }
 }

@@ -1,53 +1,58 @@
-import redux, { combineReducers, createStore } from 'redux';
+import redux, { combineReducers, createStore, applyMiddleware } from 'redux';
 import reactRedux, { connect } from 'react-redux';
-import { SEARCH } from '../actions/action_types';
-import { searchEventsReducer } from './reducers';
-
-// const SEARCH = 'SEARCH_FOR_EVENTS';
-
-
-
-// Reducers
-// const searchEventsReducer = (state = initialState, action) => {
-//   console.log('From game logic: ', action.type);
-//   switch (action.type) {
-//     case SEARCH:
-      
-//       let newState = {
-//         ...state,
-//         searchEventsQuery: action.value
-//       }
-      
-//       return newState;
-//   }
-//   return state;
-// }
+import axios from 'axios';
+import thunk from 'redux-thunk';
+import ReduxPromise from 'redux-promise';
+import { SEARCH, FETCH_EVENTS, EVENTS_READY } from '../actions/action_types';
+import { searchEventsReducer, getEventsReducer, initialState, renderEventsReducer } from './reducers';
 
 const rootReducer = combineReducers({
-  searchEventsReducer
+  searchEventsReducer,
+  getEventsReducer
 });
 
-const store = createStore(rootReducer);
+// const store = applyMiddleware(ReduxPromise)(createStore)(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+const fetchEvents = () => {
+  const request = axios.get(url)
+  console.dir(request)
+  return (dispatch) => {
+    request.then(data => {
+      store.dispatch({ type: FETCH_EVENTS, payload: data.events })
+      console.log('fetched')
+    })   
+  }
+}
 
 // Redux props and action connectors
 const mapStateToProps = (state) => {
   // console.log(state)
   return {
     search: state.searchEventsReducer,
+    events: state.renderEventsReducer
     // events: state.events
   }
 }
+
 
 const mapDispatchToProps = (dispatch) => {
   // console.log(dispatch)
   return {
     searchEventsAction: (query) => {
-      dispatch({type: SEARCH, value: query})
+      dispatch({ type: SEARCH, payload: query })
+    },
+    // fetchEvents: fetchEvents
+    fetchEvents: () => {
+      const request = axios.get(url);
+      dispatch({ type: FETCH_EVENTS, payload: request })
     }
   }
 }
 
+
+
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-module.exports = { connector, rootReducer, store }
+module.exports = { connector, rootReducer, store, url }
 
