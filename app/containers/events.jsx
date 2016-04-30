@@ -11,17 +11,28 @@ class Events extends Component {
       events: []
     }    
   }
-  renderEvents(event, index) {
-      return <Event {...event} key={index} />
+  renderEvents() {
+    console.log(this.props)
+    let p = this.props;
+    const test = () => {
+      if (!p.search.events) {
+        return p.allEvents;
+      }
+      return p.search.events;
+    }
+
+    return test().map((event, index) => {
+      return <Event {...event} key={index} />      
+    })
     
   }
   render() {
-
+    // console.log(this.props)
     return (
       <div id="events-view">
         <TopBar />
         <div id="events-container">
-          {this.props.search.events.map(this.renderEvents)}
+          {this.renderEvents()}
         </div>
       </div>
     )

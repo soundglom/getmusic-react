@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { SEARCH, FETCH_EVENTS } from '../actions/action_types';
+import { SEARCH_EVENTS, FETCH_EVENTS } from '../actions/action_types';
 import axios from 'axios';
 import { events } from '../../data';
 
@@ -11,9 +11,9 @@ const initialState = {
 }
 
 export const searchEventsReducer = (state = initialState, action) => {
-  console.log('From game logic: ', action.type);
+  // console.log('From game logic: ', action.type);
   switch (action.type) {
-    case SEARCH:
+    case SEARCH_EVENTS:
       let newEvents = Object.assign([], state.allEvents)
  
       let searchedEvents = newEvents.filter((event) => {

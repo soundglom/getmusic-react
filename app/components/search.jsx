@@ -9,10 +9,11 @@ class Search extends Component {
   }
   handleEventSearch(event) {
     event.preventDefault();
+    let p = this.props
     let searchForm = document.getElementById('event-search');
-    console.log('Search form value: ', searchForm.value)
+    // console.log('Search form value: ', searchForm.value)
     console.log('Props from search: ', this.props)
-    this.props.searchEventsAction(searchForm.value);
+    p.searchEventsAction(searchForm.value, p.allEvents);
     searchForm.value = '';
     browserHistory.push('/events');
 
