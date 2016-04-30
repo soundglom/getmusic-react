@@ -43,10 +43,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({ type: SEARCH, payload: query })
     },
     // fetchEvents: fetchEvents
-    fetchEvents: () => {
-      const request = axios.get(url);
-      dispatch({ type: FETCH_EVENTS, payload: request })
-    }
+    // fetchEvents: () => {
+    //   const request = axios.get(url);
+    //   dispatch({ type: FETCH_EVENTS, payload: request })
+    // }
   }
 }
 
@@ -54,5 +54,5 @@ const mapDispatchToProps = (dispatch) => {
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-module.exports = { connector, rootReducer, store, url }
+module.exports = { connector, rootReducer, store }
 

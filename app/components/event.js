@@ -6,7 +6,7 @@ export default (p) => {
     <div className="media-object stack-for-small" id={p.id}>
       <div className="media-object-section">
         <div className="thumbnail">
-          <img src={p.logo.url || 'https://goo.gl/xMhwMm'} />
+          <img src={!p.logo ? 'https://goo.gl/xMhwMm' : p.logo.url} />
         </div>
       </div>
       <div className="media-object-section">
