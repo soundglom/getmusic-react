@@ -58,10 +58,10 @@ app.use('/api/data', (req, res, next) => {
   res.send(eventData)
 })
 
-app.get('/', function (req, res, next) {
+// app.get('/', function (req, res, next) {
 
-  res.sendFile('/index.html', { root: __dirname });
-});
+//   res.sendFile('/index.html', { root: __dirname });
+// });
 
 app.listen(port, function () {
 
