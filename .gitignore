@@ -4,4 +4,4 @@ npm-debug.log
 .env
 
 # Unhide for deployment
-dist/
+dist/bundle.js.map
