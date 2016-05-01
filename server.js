@@ -4,9 +4,9 @@ var path = require('path');
 var bodyParser = require('body-parser')
 var axios = require('axios')
 
-var devServer = require('./server/devserver')
-var prodServer = require('./server/prodserver')
-var apiUrl = require('./server/apis')
+// var devServer = require('./server/devserver')
+// var prodServer = require('./server/prodserver')
+// var apiUrl = require('./server/apis')
 var EVENTBRITE = process.env.EVENTBRITE
 
 var publicPath = path.resolve(__dirname, 'dist/');
