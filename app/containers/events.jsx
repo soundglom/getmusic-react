@@ -27,7 +27,6 @@ class Events extends Component {
     
   }
   render() {
-    // console.log(this.props)
     return (
       <div id="events-view">
         <TopBar />
