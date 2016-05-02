@@ -1,3 +1,4 @@
+/*eslint no-useless-constructor: 0*/
 import React, { Component } from 'react';
 import TopBar from '../components/topbar';
 import Event from '../components/event';
