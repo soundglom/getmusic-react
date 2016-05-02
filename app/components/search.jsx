@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connector } from '../store/store';
 
-class Search extends Component {
+export class Search extends Component {
   constructor (props) {
     super(props);
     this.handleEventSearch = this.handleEventSearch.bind(this);
