@@ -6,7 +6,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 var publicPath = path.resolve(__dirname, 'dist/');
 
-function prodServer() {
+function prodServer () {
   app.use(express.static(publicPath));
 
   app.get('*', function (req, res) {
@@ -18,4 +18,4 @@ function prodServer() {
   });
 }
 
-module.exports = prodServer
+module.exports = prodServer;
