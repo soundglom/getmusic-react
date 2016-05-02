@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from'react-router';
+import { Route } from 'react-router';
 import Landing from './containers/landing';
 import Events from './containers/events';
 
