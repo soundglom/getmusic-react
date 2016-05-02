@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --require test/helpers/setup.js",
     "lint": "semistandard --verbose | snazzy",
+    "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test",
+    "check-cover": "nyc check-coverage --lines 95 --functions 95 --branches 95",
     "prod": "NODE_ENV=production node server.js",
     "dev": "NODE_ENV=development node server.js",
     "start": "NODE_ENV=production node server.js"
@@ -25,24 +27,42 @@
     "autoprefixer": "^6.3.6",
     "babel": "^6.5.2",
     "babel-core": "^6.7.6",
+    "babel-jest": "^12.0.2",
     "babel-loader": "^6.2.4",
     "babel-polyfill": "^6.7.4",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.7.2",
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
     "css-loader": "^0.23.1",
     "dotenv": "^2.0.0",
+    "enzyme": "^2.2.0",
+    "eslint": "^2.9.0",
+    "eslint-config-semistandard": "^6.0.1",
+    "eslint-config-standard": "^5.3.0",
+    "eslint-config-standard-react": "^2.4.0",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-promise": "^1.1.0",
+    "eslint-plugin-react": "^5.0.1",
+    "eslint-plugin-standard": "^1.3.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
+    "jest-cli": "^12.0.2",
+    "jsdom": "^8.5.0",
     "json-loader": "^0.5.4",
+    "mocha-lcov-reporter": "^1.2.0",
     "node-sass": "^3.6.0",
+    "nyc": "^6.4.2",
     "postcss-loader": "^0.8.2",
     "raw-loader": "^0.5.1",
+    "react-addons-test-utils": "^15.0.2",
     "react-hot-loader": "^1.3.0",
     "sass-loader": "^3.2.0",
-    "semistandard": "*",
     "script-loader": "^0.6.1",
+    "semistandard": "^7.0.5",
+    "sinon": "^1.17.4",
     "style-loader": "^0.13.1",
     "stylus-loader": "^2.0.0",
     "webpack": "^1.13.0",
@@ -72,5 +92,16 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.0.1",
     "what-input": "^2.0.1"
+  },
+  "nyc": {
+    "extension": [
+      ".jsx",
+      ".es6"
+    ],
+    "exclude": [
+      "bundle.js",
+      "bundle.map.js",
+      "**/*.spec.js"
+    ]
   }
 }
