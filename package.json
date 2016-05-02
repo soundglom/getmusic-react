@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "semistandard --verbose | snazzy",
     "prod": "NODE_ENV=production node server.js",
     "dev": "NODE_ENV=development node server.js",
     "start": "NODE_ENV=production node server.js"
@@ -40,6 +41,7 @@
     "raw-loader": "^0.5.1",
     "react-hot-loader": "^1.3.0",
     "sass-loader": "^3.2.0",
+    "semistandard": "*",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.1",
     "stylus-loader": "^2.0.0",

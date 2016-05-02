@@ -3,39 +3,36 @@ import { browserHistory } from 'react-router';
 import { connector } from '../store/store';
 
 class Search extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.handleEventSearch = this.handleEventSearch.bind(this);
   }
-  handleEventSearch(event) {
+  handleEventSearch (event) {
     event.preventDefault();
-    let p = this.props
+    let p = this.props;
     let searchForm = document.getElementById('event-search');
     // console.log('Search form value: ', searchForm.value)
-    console.log('Props from search: ', this.props)
+    console.log('Props from search: ', this.props);
     p.searchEventsAction(searchForm.value, p.allEvents);
     searchForm.value = '';
     browserHistory.push('/events');
-
   }
-  render() {
+  render () {
     return (
-      <div className="top-bar-right">
+      <div className='top-bar-right'>
         <form onSubmit={this.handleEventSearch}>
-          <ul className="menu">
-            <li><input 
-              id="event-search"
-              value={this.props.setEventSearch}
-               
-              type="search" 
-              placeholder="Search" 
+          <ul className='menu'>
+            <li><input
+              id='event-search'
+              type='search'
+              placeholder='Search'
             /></li>
-            <li><button type="submit" className="button">Search</button></li>
+            <li><button type='submit' className='button'>Search</button></li>
           </ul>
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default connector(Search)
+export default connector(Search);

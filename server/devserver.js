@@ -1,13 +1,11 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var webpackMiddleware = require('webpack-dev-middleware');
-var webpackHotMiddleware = require('webpack-hot-middleware');
 var config = require('../webpack.config');
 
 var development = process.env.NODE_ENV !== 'production';
 var port = development ? 3000 : process.env.PORT;
 
-function devServer() {
+function devServer () {
   var server = new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
@@ -21,7 +19,7 @@ function devServer() {
     }
 
     console.log('Listening at localhost: ', port);
-  }); 
+  });
 }
 
 module.exports = devServer;
