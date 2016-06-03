@@ -11,3 +11,7 @@ node_js:
 #  - sudo apt-get install -y libappindicator1 fonts-liberation
 #  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 #  - sudo dpkg -i google-chrome*.deb
+
+env:
+  - NODE_ENV=production
+  - EVENTBRITE=XMdeN8Jwd4L1VPx6mIECVjuTLiTPNUrM0fk9o4BUpvL1xSKNAuyXaq1FOxMdGbpLnSyQdN5SFMiIL1nwo0+yPBpfYyOdGHYT70NPklS9iSnPisXwU4N5JbKjdQ/wXsTKmKNtMcEPT7sSHkuT3xfNAsdlkBA3LR48wEY1nROG+tlZyZK+gSw2VKukWyohGrhIvemDUhHtOBGEwH93h1AJ+0mog9IGAE5w4dnSE42Kg+O73JzzOE/ehXrpft/ru9pXeIjymltK4vuzbGPMBMxLtzegAbIEVfbDmzclzSPvDofN7Nj4TkjZysmOOuXrWkTtEGxKHTS0SRg254yDD0s5uRERkQa+9ANedojUAThWo3AOFj1BjYHCkeIAEk+hpvtBFLZUOZan7Sw2OgHL4LG5m4iDyTMDluiM69JX0+oD8KA+AuElEbNkL4b6rUZw+nQG4/zl/qPsYI9GBdhl7FQ64Z6CWqyvhLbR3lfagPchJeklQ7bA23Ct4g7TxWR378+KEAqQDZUFCGx7oFKttcg6GZatJTg18JSH4eW+Ay4N11D05/qRqiEPhQRnQLi6TE6Jmm1/L6l73xUTLMKHbIgAUdSZyGz+McYHVkwPiV9E+DVrtRf7ObJBuVPV/aY/JT+aPNEiKwcPnuhi6s9Hdt+jNPcmGF3hEK5t5M5VNVCaprw=

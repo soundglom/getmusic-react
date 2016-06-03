@@ -8,7 +8,7 @@
     "lint": "semistandard --verbose | snazzy",
     "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test",
     "check-cover": "nyc check-coverage --lines 95 --functions 95 --branches 95",
-    "prod": "NODE_ENV=production node server.js",
+    "prod": "NODE_ENV=production webpack && node server.js",
     "dev": "NODE_ENV=development node server.js",
     "start": "NODE_ENV=production node server.js"
   },
@@ -91,6 +91,7 @@
     "redux": "^3.5.1",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.0.1",
+    "stylus": "^0.54.5",
     "what-input": "^2.0.1"
   },
   "nyc": {
