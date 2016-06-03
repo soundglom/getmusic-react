@@ -13,7 +13,7 @@ node_js:
 #  - sudo dpkg -i google-chrome*.deb
 
 env:
-  - NODE_ENV=production
+  # - NODE_ENV=production
   - CXX=g++-4.8
 
 addons:

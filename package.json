@@ -51,6 +51,7 @@
     "file-loader": "^0.8.5",
     "jsdom": "^8.5.0",
     "json-loader": "^0.5.4",
+    "mocha": "^2.5.3",
     "mocha-lcov-reporter": "^1.2.0",
     "node-sass": "^3.6.0",
     "nyc": "^6.4.2",
