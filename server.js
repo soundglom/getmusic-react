@@ -13,16 +13,29 @@ var app = express();
 var url = apiUrl + EVENTBRITE;
 var eventData = [];
 
+var testEvents = require('./database/insert-events.js');
+
+testEvents();
+
 axios.get(url)
   .then((res) => {
     res.data.events.forEach(event => {
       eventData.push(event);
     });
-  });
+  })
+  .then(() => {
+    query('INSERT INTO newEvents(id, data) values($1,$2)', [1, eventData]);
+
+    query.on('end', function() { 
+      client.end(); 
+      console.log('Done!');
+    });
+  })
 
 app.use(express.static(publicPath));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
 
 if (development) {
   var webpack = require('webpack');
@@ -32,6 +45,8 @@ if (development) {
   var compiler = webpack(config);
 
   app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    quiet: true,
     hot: true,
     filename: 'bundle.js',
     publicPath: '/dist/',
@@ -42,7 +57,7 @@ if (development) {
   }));
 
   app.use(webpackHotMiddleware(compiler, {
-    log: console.log,
+    //log: console.log,
     path: '/__webpack_hmr',
     heartbeat: 10 * 1000
   }));
