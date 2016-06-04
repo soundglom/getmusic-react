@@ -36,4 +36,3 @@ class Events extends Component {
 }
 
 export default connector(Events);
-
