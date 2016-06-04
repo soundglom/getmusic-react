@@ -13,9 +13,9 @@ var app = express();
 var url = apiUrl + EVENTBRITE;
 var eventData = [];
 
-var testEvents = require('./database/insert-events.js');
+// var testEvents = require('./database/insert-events.js');
 
-testEvents();
+// testEvents();
 
 axios.get(url)
   .then((res) => {
@@ -49,7 +49,7 @@ if (development) {
     quiet: true,
     hot: true,
     filename: 'bundle.js',
-    publicPath: '/dist/',
+    publicPath: config.output.publicPath,
     stats: {
       colors: true
     },
