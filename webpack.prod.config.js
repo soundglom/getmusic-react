@@ -37,6 +37,9 @@ module.exports = {
     return [
       autoprefixer({ browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3', 'Firefox >= 20'], flexbox: 'no-2009' })
     ];
+  },
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, 'node_modules')]
   }
   
 }
