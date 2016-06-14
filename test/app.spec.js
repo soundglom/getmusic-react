@@ -1,5 +1,3 @@
-/* eslint-env mocha */
-
 const { expect } = require('chai');
 const React = require('react');
 const { Search } = require('../app/components/search');
