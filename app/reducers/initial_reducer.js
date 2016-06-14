@@ -1,4 +1,4 @@
-import { INITIAL_STATE } from '../../actions/action_types';
+import { INITIAL_STATE } from '../actions/action_types';
 
 const initialReducer = (state = {}, action) => {
   switch (action.type) {
