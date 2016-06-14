@@ -6,8 +6,9 @@ const axios = require('axios');
 const apiUrl = require('./apis/eventbrite');
 const EVENTBRITE = process.env.EVENTBRITE;
 const publicPath = '../dist';
-const development = process.env.NODE_ENV !== 'production';
-const port = development ? 3000 : process.env.PORT;
+// const development = process.env.NODE_ENV !== 'production';
+const development = false;
+const port = process.env.PORT || 3000;
 
 const app = express();
 const url = apiUrl + EVENTBRITE;
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 if (development) {
+  console.log('We\'re in development mode.');
   const webpackMiddleware = require('./middleware/devserver');
   webpackMiddleware(app);
 }
