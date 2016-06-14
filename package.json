@@ -1,15 +1,15 @@
 {
   "name": "getmusic-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "Find events and connect with the local music community.",
   "main": "index.js",
   "scripts": {
     "test": "mocha --require test/helpers/setup.js",
     "lint": "semistandard --verbose | snazzy",
     "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test",
     "check-cover": "nyc check-coverage --lines 95 --functions 95 --branches 95",
-    "prod": "NODE_ENV=production webpack -p --config ./webpack.prod.config.js && node server.js",
-    "dev": "NODE_ENV=development node server/server.js",
+    "prod": "NODE_ENV=production webpack -p --config ./webpack.prod.config.js && node server/server.js",
+    "dev": "NODE_ENV=development webpack && node server/server.js",
     "start": "NODE_ENV=production node server/server.js"
   },
   "repository": {
@@ -17,7 +17,7 @@
     "url": "git+https://github.com/Shinobi881/getmusic-react.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Muhsin Abdul-Musawwir",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Shinobi881/getmusic-react/issues"
@@ -53,7 +53,8 @@
     "json-loader": "^0.5.4",
     "mocha": "^2.5.3",
     "mocha-lcov-reporter": "^1.2.0",
-    "node-sass": "^3.6.0",
+    "node-gyp": "^3.3.1",
+    "node-sass": "^3.7.0",
     "nyc": "^6.4.2",
     "postcss-loader": "^0.8.2",
     "raw-loader": "^0.5.1",

@@ -8,11 +8,7 @@ class TopBar extends Component {
   constructor (props) {
     super(props);
   }
-  componentWillMount () {
-    // this.props.fetchEvents();
-  }
   render () {
-    // this.getEvents();
     return (
       <div className='top-bar' id='example-menu'>
         <div className='top-bar-left'>

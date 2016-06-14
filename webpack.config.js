@@ -5,8 +5,7 @@ var autoprefixer = require('autoprefixer');
 module.exports = {
   devtool: 'sourcemap',
   entry: [
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', // WebpackDevServer host and port
-    // 'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', // WebpackDevServer 
     './app/entry.jsx'
   ],
   output: {
