@@ -10,6 +10,20 @@ const TYPES = require('../app/actions/action_types');
 
 describe('Action Creators', () => {
   describe('searchEventsAction', () => {
+    it('should be a function', () => {
+      expect(searchEventsAction).to.be.a('function');
+    });
+
+    it('should return an object', () => {
+      const query = 'T'
+      const expectedAction = {
+        type: TYPES.SEARCH_EVENTS,
+        payload: { query }
+      };
+
+      expect(searchEventsAction(query)).to.be.a('object');
+    });
+
     it('should create a search query action', () => {
       const query = 'T'
       const expectedAction = {
@@ -17,7 +31,7 @@ describe('Action Creators', () => {
         payload: { query }
       };
 
-      expect(searchEventsAction(query)).to.deep.equal(expectedAction)
+      expect(searchEventsAction(query)).to.deep.equal(expectedAction);
     });
 
     it(`should have a type of ${TYPES.SEARCH_EVENTS}`, () => {
