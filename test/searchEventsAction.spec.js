@@ -1,5 +1,3 @@
-
-
 import { expect } from 'chai';
 import { searchEventsAction } from '../app/actions'
 import * as TYPES from '../app/actions/action_types'

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "18b7737e5e2eec42aa51"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "56abede36b3d1ea116e3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -18585,7 +18585,7 @@
 	var _action_types = __webpack_require__(34);
 	
 	var searchEventsAction = exports.searchEventsAction = function searchEventsAction(query, state) {
-	  return { type: _action_types.SEARCH_EVENTS, payload: { query: query, state: state } };
+	  return { type: _action_types.SEARCH_EVENTS, payload: { query: query } };
 	};
 	
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(13); if (makeExportsHot(module, __webpack_require__(2))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
