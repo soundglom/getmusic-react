@@ -7,6 +7,7 @@ const apiUrl = require('./apis/eventbrite');
 const EVENTBRITE = process.env.EVENTBRITE;
 const publicPath = '../dist';
 // const development = process.env.NODE_ENV !== 'production';
+const env = process.env.NODE_ENV || 'development';
 const development = false;
 const port = process.env.PORT || 3000;
 
@@ -26,7 +27,7 @@ app.use(express.static('dist/'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-if (development) {
+if (env === 'development') {
   console.log('We\'re in development mode.');
   const webpackMiddleware = require('./middleware/devserver');
   webpackMiddleware(app);
