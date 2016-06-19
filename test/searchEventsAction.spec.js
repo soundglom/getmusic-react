@@ -1,12 +1,9 @@
-const { expect } = require('chai');
-const { searchEventsAction } = require('../app/actions');
-const TYPES = require('../app/actions/action_types');
 
-// ----------------------------------------
-// import { expect } from 'chai';
-// import * as actions from '../../actions/TodoActions'
-// import * as types from '../../constants/ActionTypes'
-// ----------------------------------------
+
+import { expect } from 'chai';
+import { searchEventsAction } from '../app/actions'
+import * as TYPES from '../app/actions/action_types'
+
 
 describe('Action Creators', () => {
   describe('searchEventsAction', () => {
@@ -44,4 +41,11 @@ describe('Action Creators', () => {
       expect(searchEventsAction(query).type).to.equal(TYPES.SEARCH_EVENTS)
     });
   });
-})
+});
+
+
+/**************************** Just in case *******************************/
+// const { expect } = require('chai');
+// const { searchEventsAction } = require('../app/actions');
+// const TYPES = require('../app/actions/action_types');
+
