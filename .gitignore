@@ -7,4 +7,4 @@ coverage/
 
 # Unhide for deployment
 dist/bundle.js.map
-dist/bundle.js
+
