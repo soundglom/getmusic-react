@@ -25,8 +25,7 @@ class Events extends Component {
   }
   render () {
     return (
-      <div id='events-view'>
-        <TopBar />
+      <div className='small-8 columns' id='events-view'>
         <div id='events-container'>
           {this.renderEvents()}
         </div>
