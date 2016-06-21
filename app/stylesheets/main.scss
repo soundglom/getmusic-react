@@ -3,7 +3,8 @@
 
   // include all modules of foundation
   @include foundation-everything;
-  @import 'components/all';  
+  @import 'components/all';
+  @import 'containers/all';  
   
 }
 

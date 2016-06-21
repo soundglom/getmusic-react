@@ -1,12 +1,13 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import Landing from './containers/landing';
-import Events from './containers/events';
+import ResultsView from './containers/results';
+import SideBar from './containers/sidebar';
 
 const routes = () => (
   <Route>
     <Route path='/' component={Landing} />
-    <Route path='/events' component={Events} />
+    <Route path='/results' component={ResultsView} />
   </Route>
 );
 
