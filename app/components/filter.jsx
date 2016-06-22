@@ -20,6 +20,7 @@ class Filter extends Component {
   }
   handleClick(event) {
     console.log('Event:', event.target.textContent);
+    console.log('Props: ', this.props);
     let genre = event.target.textContent;
 
     store.dispatch({ type: 'FILTER_EVENTS', payload: { genre, state: this.props } });

@@ -8,11 +8,17 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 
 // Redux props and action connectors
 const mapStateToProps = (state) => {
+  // console.log(state);
   return {
     allEvents: state.fetchReducer.allEvents,
+    myEvents: [],
     search: {
       searchQuery: state.searchReducer.query,
       events: state.searchReducer.events
+    },
+    filter: {
+      enabled: state.filterReducer.filters,
+      events: state.filterReducer.events
     }
   };
 };
