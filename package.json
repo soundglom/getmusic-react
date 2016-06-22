@@ -24,6 +24,9 @@
   "bugs": {
     "url": "https://github.com/Shinobi881/getmusic-react/issues"
   },
+  "engines": {
+    "node": ">=6.1.0"
+  },
   "homepage": "https://github.com/Shinobi881/getmusic-react#readme",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
