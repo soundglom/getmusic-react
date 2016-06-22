@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import TopBar from '../components/topbar';
-import Events from './events';
 import SideBar from './sidebar';
+import SideBarTwo from './sidebar2';
+import Events from './events';
 
 class ResultsView extends Component {
   render () {
     return (
       <div id='results-view'>
         <TopBar />
-        <SideBar />
+        <SideBarTwo />
         <Events />
       </div>
     );

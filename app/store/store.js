@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import thunk from 'redux-thunk';
 import * as actions from '../actions';
 import rootReducer from '../reducers';
-console.log(rootReducer);
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
