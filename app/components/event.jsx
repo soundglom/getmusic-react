@@ -12,7 +12,7 @@ const Event = (props) => {
       </div>
       <div className='media-object-section'>
         <h4>{props.name.text}</h4>
-        <p>{props.description.text}</p>
+        <p>{props.description.short}</p>
       </div>
     </div>
   );
@@ -27,7 +27,8 @@ Event.propTypes = {
     text: string.isRequired
   }),
   description: shape({
-    text: string
+    text: string,
+    short: string
   })
 };
 

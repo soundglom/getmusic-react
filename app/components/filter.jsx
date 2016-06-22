@@ -1,23 +1,36 @@
 import React, { Component } from 'react';
 import { Accordion, Panel } from 'react-bootstrap';
-import Genres from '../../eb-genres.json';
-console.log(Genres);
+import genres from '../../eb-genres.json';
+import { connector, store } from '../store/store';
 
-const Filter = (p) => {
-  return (
-    <Accordion>
-        {Genres.subcategories.map((genre, index) => {
-          return (
-            <Panel key={index}>
-              {genre.name}
-              <div className='switch'>
-                <input className='switch-input' id='exampleSwitch' type='checkbox' name='exampleSwitch' />
-              </div>
-            </Panel>
-          );
-        })}
-    </Accordion>
-  );
-};
+class Filter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { checked: false };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  renderGenres() {
+    return genres.subcategories.map((genre, index) => {
+      return (
+        <Panel key={index} onClick={this.handleClick}>
+          <h3>{genre.name}</h3>
+        </Panel>
+      );
+    });
+  }
+  handleClick(event) {
+    console.log('Event:', event.target.textContent);
+    let genre = event.target.textContent;
 
-export default Filter;
+    store.dispatch({ type: 'FILTER_EVENTS', payload: genre });
+  }
+  render() {
+    return (
+      <Accordion>
+        {this.renderGenres()}
+      </Accordion>
+    );
+  }
+}
+
+export default connector(Filter);

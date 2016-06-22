@@ -1,7 +1,7 @@
 import { SEARCH_EVENTS, INITIAL_STATE } from './action_types';
 
 export const searchEventsAction = (query, state) => {
-  return { type: SEARCH_EVENTS, payload: { query } };
+  return { type: SEARCH_EVENTS, payload: { query, state } };
 };
 
 export const intialStateAction = (query, state) => {
