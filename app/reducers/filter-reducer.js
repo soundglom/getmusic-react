@@ -1,15 +1,14 @@
-import { SEARCH_EVENTS } from '../actions/action_types';
+import { FILTER_EVENTS } from '../actions/action_types';
 
-const searchReducer = (state = {}, action) => {
-  console.log(action.type);
+const filterReducer = (state = {}, action) => {
   switch (action.type) {
-    case SEARCH_EVENTS:
+    case FILTER_EVENTS:
       // console.log('Searching!', action.payload)
       let newState = {...action.payload};
 
-      console.log(newState);
-      let searchedEvents = newState.state.filter((event) => {
-        let queryTest = `${event.name.text} ${event.description.text}`.toUpperCase()
+      let filteredEvents = newState.state.filter((event) => {
+        debugger;
+        let queryTest = `${event.description.text} ${event.genre}`.toUpperCase()
                       .indexOf(newState.query.toUpperCase());
         if (queryTest >= 0) return event;
       });
