@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b003346d9af38ca11a21"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "07f78e5f7a37e70e8702"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -4863,11 +4863,17 @@
 	
 	// Redux props and action connectors
 	var mapStateToProps = function mapStateToProps(state) {
+	  // console.log(state);
 	  return {
 	    allEvents: state.fetchReducer.allEvents,
+	    myEvents: [],
 	    search: {
 	      searchQuery: state.searchReducer.query,
 	      events: state.searchReducer.events
+	    },
+	    filter: {
+	      enabled: state.filterReducer.filters,
+	      events: state.filterReducer.events
 	    }
 	  };
 	};
@@ -12819,6 +12825,7 @@
 	    key: 'handleClick',
 	    value: function handleClick(event) {
 	      console.log('Event:', event.target.textContent);
+	      console.log('Props: ', this.props);
 	      var genre = event.target.textContent;
 	
 	      _store.store.dispatch({ type: 'FILTER_EVENTS', payload: { genre: genre, state: this.props } });
@@ -70903,21 +70910,25 @@
 	  var _ret = function () {
 	    switch (action.type) {
 	      case _action_types.FILTER_EVENTS:
-	        console.log(action.payload);
+	        // console.log(action.payload);
 	        // console.log('Searching!', action.payload)
 	        var newState = _extends({}, action.payload);
 	
-	        var filteredEvents = newState.state.allEvents.filter(function (event) {
-	          console.log(event.genre);
+	        var filteredEvents = newState.state.allEvents.filter(function (event, i, l) {
+	          // console.log(event.genre);
 	          var genreTest = ('' + event.genre).toUpperCase().indexOf(newState.genre.toUpperCase());
-	          if (genreTest >= 0) return event;
+	
+	          if (genreTest >= 0) {
+	            newState.state.myEvents.push(event);
+	            return event;
+	          }
 	        });
 	
-	        console.log({ filteredEvents: filteredEvents, genre: newState.genre });
+	        // console.log({filteredEvents, genre: newState.genre});
 	        return {
 	          v: {
 	            events: filteredEvents,
-	            filter: newState.genre
+	            filters: newState.genre
 	          }
 	        };
 	      default:
