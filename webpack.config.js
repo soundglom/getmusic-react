@@ -1,3 +1,4 @@
+
 var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
@@ -14,20 +15,44 @@ module.exports = {
     publicPath: '/dist/'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
+    extensions: ['', '.js', '.jsx', '.json'],
+    alias: {
+      foundation: 'foundation-sites/js/foundation.core'
+    }
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
   ],
   module: {
     loaders: [
       { test: path.join(__dirname, 'app'), loaders: ['react-hot', 'babel-loader'], exclude: /(node_modules|bower_components)/ },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
-      { test: /\.css$/, loader: 'style-loader!css-loader' }
-      // { test: /\.json$/, loaders: ['json-loader'] }
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'url?limit=10000!img?progressive=true' },
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'url?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'url?limit=10000&mimetype=application/octet-stream'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'file'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+        loader: 'url?limit=10000&mimetype=image/svg+xml'
+      }
+
 
     ],
     preLoaders: [
