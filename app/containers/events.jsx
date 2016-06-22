@@ -13,10 +13,21 @@ class Events extends Component {
     // console.log(this.props);
     let p = this.props;
     const test = () => {
-      if (!p.search.events) {
-        return p.allEvents;
+      // if (!p.search.events) {
+      //   return p.allEvents;
+      // } else if (!p.myEvents) {
+      //   return p.allEvents;
+      // }
+      if (p.filter.events) {
+        return p.filter.events;
+      } else if (p.search.events) {
+        return p.search.events;
       }
-      return p.search.events;
+
+      // if (!p.filter.events) {
+      //   return p.allEvents;
+      // }
+      return p.allEvents;
     };
 
     return test().map((event, index) => {

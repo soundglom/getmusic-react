@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 import { Accordion, Panel } from 'react-bootstrap';
 import genres from '../../eb-genres.json';
 import { connector, store } from '../store/store';
+
+const { string, func, object, shape } = PropTypes;
 
 class Filter extends Component {
   constructor(props) {
@@ -23,7 +26,9 @@ class Filter extends Component {
     console.log('Props: ', this.props);
     let genre = event.target.textContent;
 
-    store.dispatch({ type: 'FILTER_EVENTS', payload: { genre, state: this.props } });
+    this.props.filterEventsAction(genre, this.props);
+    this.forceUpdate();
+    // store.dispatch({ type: 'FILTER_EVENTS', payload: { genre, state: this.props } });
   }
   render() {
     return (
@@ -33,5 +38,12 @@ class Filter extends Component {
     );
   }
 }
+
+Filter.propTypes = {
+  genre: shape({
+    name: string
+  }),
+  filterEventsAction: func
+};
 
 export default connector(Filter);

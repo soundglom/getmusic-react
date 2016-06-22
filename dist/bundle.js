@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "07f78e5f7a37e70e8702"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5f811941a73dc706bc0c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -12775,6 +12775,8 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(106);
+	
 	var _reactBootstrap = __webpack_require__(272);
 	
 	var _ebGenres = __webpack_require__(424);
@@ -12790,6 +12792,11 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var string = _react.PropTypes.string;
+	var func = _react.PropTypes.func;
+	var object = _react.PropTypes.object;
+	var shape = _react.PropTypes.shape;
 	
 	var Filter = function (_Component) {
 	  _inherits(Filter, _Component);
@@ -12828,7 +12835,9 @@
 	      console.log('Props: ', this.props);
 	      var genre = event.target.textContent;
 	
-	      _store.store.dispatch({ type: 'FILTER_EVENTS', payload: { genre: genre, state: this.props } });
+	      this.props.filterEventsAction(genre, this.props);
+	      this.forceUpdate();
+	      // store.dispatch({ type: 'FILTER_EVENTS', payload: { genre, state: this.props } });
 	    }
 	  }, {
 	    key: 'render',
@@ -12843,6 +12852,13 @@
 	
 	  return Filter;
 	}(_react.Component);
+	
+	Filter.propTypes = {
+	  genre: shape({
+	    name: string
+	  }),
+	  filterEventsAction: func
+	};
 	
 	exports.default = (0, _store.connector)(Filter);
 	
@@ -70108,16 +70124,20 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.intialStateAction = exports.searchEventsAction = undefined;
+	exports.filterEventsAction = exports.searchEventsAction = exports.intialStateAction = undefined;
 	
 	var _action_types = __webpack_require__(63);
+	
+	var intialStateAction = exports.intialStateAction = function intialStateAction(state) {
+	  return { type: _action_types.INITIAL_STATE, payload: state };
+	};
 	
 	var searchEventsAction = exports.searchEventsAction = function searchEventsAction(query, state) {
 	  return { type: _action_types.SEARCH_EVENTS, payload: { query: query, state: state } };
 	};
 	
-	var intialStateAction = exports.intialStateAction = function intialStateAction(query, state) {
-	  return { type: _action_types.INITIAL_STATE };
+	var filterEventsAction = exports.filterEventsAction = function filterEventsAction(genre, state) {
+	  return { type: _action_types.FILTER_EVENTS, payload: { genre: genre, state: state } };
 	};
 	
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(20); if (makeExportsHot(module, __webpack_require__(1))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
@@ -70249,6 +70269,7 @@
 	      console.log('Props from search: ', this.props);
 	      p.searchEventsAction(searchForm.value, p.allEvents);
 	      searchForm.value = '';
+	      this.forceUpdate();
 	      _reactRouter.browserHistory.push('/results');
 	    }
 	  }, {
@@ -70351,10 +70372,21 @@
 	      // console.log(this.props);
 	      var p = this.props;
 	      var test = function test() {
-	        if (!p.search.events) {
-	          return p.allEvents;
+	        // if (!p.search.events) {
+	        //   return p.allEvents;
+	        // } else if (!p.myEvents) {
+	        //   return p.allEvents;
+	        // }
+	        if (p.filter.events) {
+	          return p.filter.events;
+	        } else if (p.search.events) {
+	          return p.search.events;
 	        }
-	        return p.search.events;
+	
+	        // if (!p.filter.events) {
+	        //   return p.allEvents;
+	        // }
+	        return p.allEvents;
 	      };
 	
 	      return test().map(function (event, index) {
