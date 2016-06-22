@@ -15,7 +15,7 @@ class TopBar extends Component {
           <ul className='dropdown menu' data-dropdown-menu>
             <li className='menu-text'>Site Title</li>
             <li><Link to='/'>Home</Link></li>
-            <li ><Link to='/events' >All Events</Link></li>
+            <li ><Link to='/results' >All Events</Link></li>
           </ul>
         </div>
         <Search />

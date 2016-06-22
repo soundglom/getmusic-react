@@ -10,6 +10,7 @@ const webpackMiddleware = (server) => {
     hot: true,
     filename: 'bundle.js',
     publicPath: config.output.publicPath,
+    watch: true,
     stats: {
       colors: true,
       progress: true

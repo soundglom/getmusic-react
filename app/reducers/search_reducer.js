@@ -6,6 +6,7 @@ const searchReducer = (state = {}, action) => {
       // console.log('Searching!', action.payload)
       let newState = {...action.payload};
 
+      console.log(newState);
       let searchedEvents = newState.state.filter((event) => {
         let queryTest = `${event.name.text} ${event.description.text}`.toUpperCase()
                       .indexOf(newState.query.toUpperCase());

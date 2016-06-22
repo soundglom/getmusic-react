@@ -15,7 +15,8 @@ export class Search extends Component {
     console.log('Props from search: ', this.props);
     p.searchEventsAction(searchForm.value, p.allEvents);
     searchForm.value = '';
-    browserHistory.push('/events');
+    this.forceUpdate();
+    browserHistory.push('/results');
   }
   render () {
     return (
