@@ -22,7 +22,7 @@ class Filter extends Component {
     console.log('Event:', event.target.textContent);
     let genre = event.target.textContent;
 
-    store.dispatch({ type: 'FILTER_EVENTS', payload: genre });
+    store.dispatch({ type: 'FILTER_EVENTS', payload: { genre, state: this.props } });
   }
   render() {
     return (

@@ -1,7 +1,6 @@
 import { SEARCH_EVENTS } from '../actions/action_types';
 
 const searchReducer = (state = {}, action) => {
-  console.log(action.type);
   switch (action.type) {
     case SEARCH_EVENTS:
       // console.log('Searching!', action.payload)
