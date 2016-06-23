@@ -1,6 +1,6 @@
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
 [![NPM version](https://img.shields.io/npm/v/nyc.svg)](https://www.npmjs.com/package/nyc)
-[![Build Status](https://travis-ci.org/soundglom/getmusic-react.svg?branch=master)](https://travis-ci.org/soundglom/getmusic-react)
+[![Build Status](https://travis-ci.org/soundglom/getmusic-react.svg?branch=master)](https://travis-ci.org/soundglom/getmusiclive)
 
 #GetMusicLive
 *Find music events based on your specific tastes. Everything from large concerts to smalls bands at your neighborhood bars, From world class DJ's to spoken word to karaoke.*
