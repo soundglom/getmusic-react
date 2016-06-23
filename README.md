@@ -2,7 +2,9 @@
 [![NPM version](https://img.shields.io/npm/v/nyc.svg)](https://www.npmjs.com/package/nyc)
 [![Build Status](https://travis-ci.org/soundglom/getmusic-react.svg?branch=master)](https://travis-ci.org/soundglom/getmusic-react)
 
-#getmusic-react
+#GetMusicLive
+*Find music events based on your specific tastes. Everything from large concerts to smalls bands at your neighborhood bars, From world class DJ's to spoken word to karaoke.*
+
 
 ##Installation
 1. create file `.env` in root directory
@@ -18,3 +20,4 @@
 3. `npm cover` - Coverage with `nyc`
 
 More documentation, STYLE_GUIDE, CONTRIBUTING, coming soon
+

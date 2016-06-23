@@ -8,9 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 const routes = () => (
   <Route>
     <Route path='/' component={Landing} />
-    <Route path='/results' component={MuiThemeProvider}>
-      <IndexRoute component={ResultsView} />
-    </Route>
+    <Route path='/results' component={ResultsView} />
   </Route>
 );
 

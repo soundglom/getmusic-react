@@ -5,10 +5,12 @@ import * as actions from '../actions';
 import rootReducer from '../reducers';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
+const initialState = {
+  allEvents: []
+};
 
 // Redux props and action connectors
-const mapStateToProps = (state) => {
-  // console.log(state);
+const mapStateToProps = (state = initialState) => {
   return {
     allEvents: state.fetchReducer.allEvents,
     myEvents: [],
@@ -18,7 +20,8 @@ const mapStateToProps = (state) => {
     },
     filter: {
       enabled: state.filterReducer.filters,
-      events: state.filterReducer.events
+      events: state.filterReducer.events,
+      timeFilters: state.fetchReducer.timeFilters
     }
   };
 };

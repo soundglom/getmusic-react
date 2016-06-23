@@ -1,12 +1,10 @@
-import { SEARCH_EVENTS } from '../actions/action_types';
+import { SEARCH_EVENTS } from '../actions/action-types';
 
 const searchReducer = (state = {}, action) => {
   switch (action.type) {
     case SEARCH_EVENTS:
-      // console.log('Searching!', action.payload)
       let newState = {...action.payload};
 
-      console.log(newState);
       let searchedEvents = newState.state.filter((event) => {
         let queryTest = `${event.name.text} ${event.description.text}`.toUpperCase()
                       .indexOf(newState.query.toUpperCase());

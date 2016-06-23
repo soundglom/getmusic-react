@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connector } from '../store/store';
-import Filter from '../components/filter';
 import DropDown from './dropdown';
 
 // import TopBar from '../components/topbar';
