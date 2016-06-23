@@ -1,11 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connector } from '../store/store';
 import TopBar from '../components/topbar';
 import SideBar from './sidebar';
 import SideBarTwo from './sidebar2';
 import Events from './events';
 
+const { func } = PropTypes;
+
 class ResultsView extends Component {
-  render () {
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount() {
+    console.log(this.props);
+    this.props.fetchEventsAction();
+  }
+  render() {
     return (
       <div id='results-view'>
         <TopBar />
@@ -16,4 +26,8 @@ class ResultsView extends Component {
   }
 }
 
-export default ResultsView;
+ResultsView.propTypes = {
+  fetchEventsAction: func
+};
+
+export default connector(ResultsView);

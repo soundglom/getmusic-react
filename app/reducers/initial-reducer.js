@@ -1,9 +1,9 @@
-import { INITIAL_STATE } from '../actions/action_types';
+import { INITIAL_STATE } from '../actions/action-types';
 
 const initialReducer = (state = {}, action) => {
   switch (action.type) {
     case INITIAL_STATE:
-    // console.log('Intial state: ', state);
+      console.log('State');
       let newState = {
         allEvents: [],
         searchedEvents: [],
