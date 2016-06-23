@@ -15,15 +15,16 @@ class TimeFilter extends Component {
     let times = ['Morning', 'Afternoon', 'Evening'];
     return times.map((time, index) => {
       return (
-        <Panel key={index} onClick={this.handleClick}>
-          <h3>{time}</h3>
-        </Panel>
+        <Panel
+          key={index}
+          className='filter'
+          header={time}
+          onClick={this.handleClick}
+        />
       );
     });
   }
   handleClick(event) {
-    console.log('Event:', event.target.textContent);
-    console.log('Props: ', this.props);
     let time = event.target.textContent;
 
     this.props.filterEventsAction(time, 'time', this.props);
@@ -31,9 +32,7 @@ class TimeFilter extends Component {
   }
   render() {
     return (
-      <Accordion>
-        {this.renderTimes()}
-      </Accordion>
+      <Accordion children={this.renderTimes()} />
     );
   }
 }
