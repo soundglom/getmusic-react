@@ -14,66 +14,20 @@ const app = express();
 const url = apiUrl + EVENTBRITE;
 const eventData = [];
 const formattedEvents = [];
-
-const eData = require('../eb-events.json').events;
-const eGenres = require('../eb-genres.json').subcategories;
-
-const genreFormatter = (events, genres) => {
-  const newEvents = events.map((event, index) => {
-    let descr = event.description;
-    
-    if (event.subcategory_id === null) {
-      event.subcategory_id = "3999";    
-    }
-
-    event.description.short = event.description.text.substring(0, 200);
-    // if (event.description.text) {
-    //   desct.short = descr.text.substring(0, 140)
-    // } else {
-    //   descr.short = '';
-    // }
-
-    genres.forEach(genre => {
-      if (event.subcategory_id === genre.id) {
-        event.genre = genre.name
-      }
-    });
-
-    return formattedEvents.push(event);
-  });
-
-  return newEvents;
-};
-
-const eventFormat = (event) => {
-  
-}
+const genreFormat = require('./libs/genre-format.js');
+// console.log(genreFormat);
 
 // Reorganize into eventbrite middleware
 axios.get(url)
   .then((res) => {
     res.data.events.forEach(event => {
-      eventFormat(event);
       eventData.push(event);
     });
-
-    // genreFormatter(res.data.events, eGenres, newCol);
   })
   .then(() => {
-   genreFormatter(eventData, eGenres);
+    genreFormat(eventData, formattedEvents);
   });
 
-//###############################
-
-// console.log(eData[0]);
-
-
-
-
-
-
-
-//###############################
 
 app.use(express.static('dist/'));
 app.use(bodyParser.urlencoded({extended: true}));
