@@ -36,12 +36,15 @@ app.use(newFetch);
 
 if (env === 'development') {
   require('./middleware/devserver')(app);
-  // webpackMiddleware(app);
   console.log('We\'re in development mode.');
 }
 
 app.use('/api/data', (req, res, next) => {
   res.send(formattedEvents);
+});
+
+app.get('*', (req, res) => {
+  res.redirect('/');
 });
 
 app.listen(port, () => {
