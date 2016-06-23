@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import { searchEventsAction } from '../app/actions'
-import * as TYPES from '../app/actions/action_types'
+import { searchEventsAction } from '../app/actions';
+import * as TYPES from '../app/actions/action-types';
 
 
 describe('Action Creators', () => {
@@ -20,13 +20,14 @@ describe('Action Creators', () => {
     });
 
     it('should create a search query action', () => {
-      const query = 'T'
+      const query = 'T';
+      const state = {};
       const expectedAction = {
         type: TYPES.SEARCH_EVENTS,
-        payload: { query }
+        payload: { query, state }
       };
 
-      expect(searchEventsAction(query)).to.deep.equal(expectedAction);
+      expect(searchEventsAction(query, {})).to.deep.equal(expectedAction);
     });
 
     it(`should have a type of ${TYPES.SEARCH_EVENTS}`, () => {
