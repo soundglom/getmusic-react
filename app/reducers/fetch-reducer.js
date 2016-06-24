@@ -1,40 +1,17 @@
 import { FETCH_EVENTS } from '../actions/action-types';
+import createTimes from './libs/time-data';
+import createGenres from './libs/genre-data';
 
 const fetchReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_EVENTS:
-      let payload = action.payload;
-      let timeFilters = {
-        morning: {
-          label: 'Morning',
-          events: []
-        },
-        afterNoon: {
-          label: 'Afternoon',
-          events: []
-        },
-        evening: {
-          label: 'Evening',
-          events: []
-        }
-      };
-
-      payload.data.forEach((event) => {
-        let startTime = new Date(event.start.utc).getHours();
-        if (startTime < 12) {
-          timeFilters.morning.events.push(event);
-        } else if (startTime > 12 && startTime < 18) {
-          timeFilters.afterNoon.events.push(event);
-        } else {
-          timeFilters.evening.events.push(event);
-        }
-      });
-
-      console.log(timeFilters);
+      let events = [...action.payload.data];
 
       return {
-        allEvents: payload.data,
-        timeFilters
+        allEvents: {...events},
+        renderedEvents: [...events],
+        genreFilters: createGenres(events),
+        timeFilters: createTimes(events)
       };
     default:
       return state;

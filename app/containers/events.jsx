@@ -18,16 +18,13 @@ class Events extends Component {
       // } else if (!p.myEvents) {
       //   return p.allEvents;
       // }
-      if (p.filter.events) {
-        return p.filter.events;
-      } else if (p.search.events) {
-        return p.search.events;
-      }
-
-      // if (!p.filter.events) {
-      //   return p.allEvents;
+      // if (p.filter.events) {
+      //   return p.filter.events;
+      // } else if (p.search.events) {
+      //   return p.search.events;
       // }
-      return p.allEvents;
+      console.log(p.renderedEvents);
+      return p.renderedEvents;
     };
 
     return test().map((event, index) => {

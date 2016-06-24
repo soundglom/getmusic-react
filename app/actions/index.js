@@ -6,8 +6,8 @@ import {
   FILTER_EVENTS
 } from './action-types';
 
-export const intialStateAction = (state) => {
-  return { type: INITIAL_STATE, payload: state };
+export const initialStateAction = (state) => {
+  return { type: INITIAL_STATE };
 };
 
 export const searchEventsAction = (query, state) => {

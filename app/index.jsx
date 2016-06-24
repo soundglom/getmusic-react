@@ -7,7 +7,12 @@ import { Provider } from 'react-redux';
 import { store } from './store/store';
 import routes from './routes';
 
-store.dispatch({ type: INITIAL_STATE });
+const initialState = {
+  allEvents: [],
+  renderedEvents: []
+};
+
+store.dispatch({ type: INITIAL_STATE, payload: initialState });
 
 export default class App extends Component {
   render () {

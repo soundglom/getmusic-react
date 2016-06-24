@@ -3,6 +3,7 @@ import { SEARCH_EVENTS } from '../actions/action-types';
 const searchReducer = (state = {}, action) => {
   switch (action.type) {
     case SEARCH_EVENTS:
+      console.log(action.payload);
       let newState = {...action.payload};
 
       let searchedEvents = newState.state.filter((event) => {

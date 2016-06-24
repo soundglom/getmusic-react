@@ -4,7 +4,7 @@ import { Accordion, Panel } from 'react-bootstrap';
 import { connector, store } from '../../store/store';
 import genres from '../../../eb-genres.json';
 
-const { string, func, object, shape } = PropTypes;
+const { string, func, object, shape, array } = PropTypes;
 
 class GenreFilter extends Component {
   constructor(props) {
@@ -12,12 +12,13 @@ class GenreFilter extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   renderGenres() {
-    return genres.subcategories.map((genre, index) => {
+    let genres = this.props.genreFilters;
+    return genres.map((genre, index) => {
       return (
         <Panel
           key={index}
           className='filter'
-          header={genre.name}
+          header={genre}
           onClick={this.handleClick}
           eventKey={index.toString()}
         />
@@ -40,6 +41,7 @@ GenreFilter.propTypes = {
   genre: shape({
     name: string
   }),
+  genreFilters: array,
   filterEventsAction: func
 };
 

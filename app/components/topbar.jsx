@@ -12,6 +12,7 @@ class TopBar extends Component {
     this.handleRequest = this.handleRequest.bind(this);
   }
   componentWillMount() {
+    this.props.initialStateAction();
     this.props.fetchEventsAction();
   }
   handleRequest() {
@@ -37,7 +38,8 @@ class TopBar extends Component {
 }
 
 TopBar.propTypes = {
-  fetchEventsAction: func
+  fetchEventsAction: func,
+  initialStateAction: func
 };
 
 export default connector(TopBar);
