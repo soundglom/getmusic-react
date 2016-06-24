@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   initialReducer,
   fetchReducer,
   searchReducer,
-  filterReducer,
+  // filterReducer,
   genreFilterReducer,
   timeFilterReducer
 });

@@ -26,7 +26,14 @@ class GenreFilter extends Component {
     });
   }
   handleClick(event) {
-    let genre = event.target.textContent;
+    let el = event.target;
+    let genre = el.textContent;
+
+    if (el.classList.contains('filter-selected')) {
+      el.classList.remove('filter-selected');
+    } else {
+      el.classList.add('filter-selected');
+    }
 
     this.props.filterGenresAction(genre, 'genre', this.props);
   }

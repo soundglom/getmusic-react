@@ -17,12 +17,12 @@ const mapStateToProps = (state) => {
     search: {
       searchQuery: state.searchReducer.query,
       events: state.searchReducer.events
-    },
-    filter: {
-      enabled: state.filterReducer.filters,
-      events: state.filterReducer.events,
-      timeFilters: state.fetchReducer.timeFilters
     }
+    // filter: {
+    //   enabled: state.filterReducer.filters,
+    //   events: state.filterReducer.events,
+    //   timeFilters: state.fetchReducer.timeFilters
+    // }
   };
 };
 
