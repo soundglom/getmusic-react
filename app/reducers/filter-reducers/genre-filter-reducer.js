@@ -6,6 +6,7 @@ const genreFilterReducer = (state = {}, action) => {
       let newState = {...action.payload.state};
       let { filter, prop } = action.payload;
       let events = newState.allEvents;
+      let filterKeys = Object.keys(newState.currentFilters);
 
       const addFilter = (arr1, arr2) => {
         arr1.forEach(event => {
@@ -24,7 +25,8 @@ const genreFilterReducer = (state = {}, action) => {
                       .indexOf(filter.toUpperCase());
 
           if (test >= 0) {
-            if (arr.length === 1) {
+            // console.log(filterKeys);
+            if (filterKeys.length === 1) {
               arr.length = 0;
             } else {
               arr.splice(i, 1);
