@@ -28,7 +28,7 @@ class GenreFilter extends Component {
   handleClick(event) {
     let genre = event.target.textContent;
 
-    this.props.filterEventsAction(genre, 'genre', this.props);
+    this.props.filterGenresAction(genre, 'genre', this.props);
   }
   render() {
     return (
@@ -42,7 +42,7 @@ GenreFilter.propTypes = {
     name: string
   }),
   genreFilters: array,
-  filterEventsAction: func
+  filterGenresAction: func
 };
 
 export default connector(GenreFilter);

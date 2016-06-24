@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f4aac7c84421186be748"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2954f92dd92e4062936e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -3808,7 +3808,8 @@
 	var mapStateToProps = function mapStateToProps(state) {
 	  return {
 	    allEvents: state.fetchReducer.allEvents,
-	    renderedEvents: state.fetchReducer.renderedEvents,
+	    filteredEvents: state.fetchReducer.filteredEvents,
+	    currentFilters: state.fetchReducer.currentFilters,
 	    timeFilters: state.fetchReducer.timeFilters,
 	    genreFilters: state.fetchReducer.genreFilters,
 	    search: {
@@ -13241,23 +13242,13 @@
 	  function TopBar(props) {
 	    _classCallCheck(this, TopBar);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TopBar).call(this, props));
-	
-	    _this.handleRequest = _this.handleRequest.bind(_this);
-	    return _this;
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TopBar).call(this, props));
 	  }
 	
 	  _createClass(TopBar, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      this.props.initialStateAction();
-	      this.props.fetchEventsAction();
-	    }
-	  }, {
-	    key: 'handleRequest',
-	    value: function handleRequest() {
-	      console.log('fetched');
-	      this.props.fetchEventsAction();
+	      this.props.fetchEventsAction(this.props);
 	    }
 	  }, {
 	    key: 'render',
@@ -13287,7 +13278,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              { onClick: this.handleRequest },
+	              null,
 	              _react2.default.createElement(
 	                _reactRouter.Link,
 	                { to: '/results' },
@@ -51275,7 +51266,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.fetchEventsAction = exports.filterEventsAction = exports.searchEventsAction = exports.initialStateAction = undefined;
+	exports.fetchEventsAction = exports.filterEventsAction = exports.filterGenresAction = exports.filterTimesAction = exports.searchEventsAction = exports.initialStateAction = undefined;
 	
 	var _axios = __webpack_require__(327);
 	
@@ -51293,16 +51284,24 @@
 	  return { type: _actionTypes.SEARCH_EVENTS, payload: { query: query, state: state } };
 	};
 	
+	var filterTimesAction = exports.filterTimesAction = function filterTimesAction(filter, prop, state) {
+	  return { type: _actionTypes.FILTER_TIMES, payload: { filter: filter, prop: prop, state: state } };
+	};
+	
+	var filterGenresAction = exports.filterGenresAction = function filterGenresAction(filter, prop, state) {
+	  return { type: _actionTypes.FILTER_GENRES, payload: { filter: filter, prop: prop, state: state } };
+	};
+	
 	var filterEventsAction = exports.filterEventsAction = function filterEventsAction(filter, prop, state) {
 	  return { type: _actionTypes.FILTER_EVENTS, payload: { filter: filter, prop: prop, state: state } };
 	};
 	
-	var fetchEventsAction = exports.fetchEventsAction = function fetchEventsAction() {
+	var fetchEventsAction = exports.fetchEventsAction = function fetchEventsAction(state) {
 	  var fetch = _axios2.default.get('/api/data');
 	
 	  return function (dispatch) {
 	    fetch.then(function (res) {
-	      dispatch({ type: _actionTypes.FETCH_EVENTS, payload: res });
+	      dispatch({ type: _actionTypes.FETCH_EVENTS, payload: { res: res, state: state } });
 	    });
 	  };
 	};
@@ -51458,7 +51457,7 @@
 	    value: function handleClick(event) {
 	      var genre = event.target.textContent;
 	
-	      this.props.filterEventsAction(genre, 'genre', this.props);
+	      this.props.filterGenresAction(genre, 'genre', this.props);
 	    }
 	  }, {
 	    key: 'render',
@@ -51475,7 +51474,7 @@
 	    name: string
 	  }),
 	  genreFilters: array,
-	  filterEventsAction: func
+	  filterGenresAction: func
 	};
 	
 	exports.default = (0, _store.connector)(GenreFilter);
@@ -51553,7 +51552,7 @@
 	    value: function handleClick(event) {
 	      var time = event.target.textContent;
 	
-	      this.props.filterEventsAction(time, 'time', this.props);
+	      this.props.filterTimesAction(time, 'time', this.props);
 	      this.forceUpdate();
 	    }
 	  }, {
@@ -51570,7 +51569,7 @@
 	  genre: shape({
 	    name: string
 	  }),
-	  filterEventsAction: func
+	  filterTimesAction: func
 	};
 	
 	exports.default = (0, _store.connector)(TimeFilter);
@@ -51744,8 +51743,11 @@
 	        // } else if (p.search.events) {
 	        //   return p.search.events;
 	        // }
-	        console.log(p.renderedEvents);
-	        return p.renderedEvents;
+	        if (!p.filteredEvents.length) {
+	          return p.allEvents;
+	        }
+	
+	        return p.filteredEvents;
 	      };
 	
 	      return test().map(function (event, index) {
@@ -51903,12 +51905,6 @@
 	  }
 	
 	  _createClass(ResultsView, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      console.log(this.props);
-	      this.props.fetchEventsAction();
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -52256,14 +52252,17 @@
 	
 	  switch (action.type) {
 	    case _actionTypes.FETCH_EVENTS:
-	      var events = [].concat(_toConsumableArray(action.payload.data));
 	
-	      return {
-	        allEvents: _extends({}, events),
-	        renderedEvents: [].concat(_toConsumableArray(events)),
-	        genreFilters: (0, _genreData2.default)(events),
-	        timeFilters: (0, _timeData2.default)(events)
-	      };
+	      var newState = _extends({}, action.payload.state);
+	      var events = [].concat(_toConsumableArray(action.payload.res.data));
+	
+	      newState.allEvents = [].concat(_toConsumableArray(events));
+	      newState.filteredEvents = [];
+	      newState.timeFilters = (0, _timeData2.default)(events);
+	      newState.genreFilters = (0, _genreData2.default)(events);
+	      newState.currentFilters = {};
+	
+	      return newState;
 	    default:
 	      return state;
 	  }
@@ -52364,24 +52363,45 @@
 	  var _ret = function () {
 	    switch (action.type) {
 	      case _actionTypes.FILTER_GENRES:
-	        var newState = _extends({}, action.payload);
-	        console.log('App State: ', state);
-	        console.log('Payload: ', action.payload);
+	        var newState = _extends({}, action.payload.state);
+	        var _action$payload = action.payload;
+	        var filter = _action$payload.filter;
+	        var prop = _action$payload.prop;
 	
-	        var filteredEvents = newState.state.allEvents.filter(function (event, i, l) {
-	          var filterTest = ('' + event[newState.prop]).toUpperCase().indexOf(newState.filter.toUpperCase());
+	        var events = newState.allEvents;
 	
-	          if (filterTest >= 0) {
-	            newState.state.myEvents.push(event);
-	            return event;
-	          }
-	        });
+	        var addFilter = function addFilter(arr1, arr2) {
+	          arr1.forEach(function (event) {
+	            var test = ('' + event.genre).toUpperCase().indexOf(filter.toUpperCase());
+	
+	            if (test >= 0) {
+	              arr2.push(event);
+	            }
+	          });
+	        };
+	
+	        var removeFilter = function removeFilter(arr, i) {
+	          arr.forEach(function (event) {
+	            var test = ('' + event.genre).toUpperCase().indexOf(filter.toUpperCase());
+	
+	            if (test >= 0) {
+	              arr.splice(i, 1);
+	            }
+	          });
+	        };
+	
+	        if (newState.currentFilters[filter]) {
+	          delete newState.currentFilters[filter];
+	          removeFilter(newState.filteredEvents);
+	        } else {
+	          newState.currentFilters[filter] = filter;
+	          addFilter(newState.allEvents, newState.filteredEvents);
+	        }
+	        console.log(newState.currentFilters);
+	        console.log(newState);
 	
 	        return {
-	          v: {
-	            events: filteredEvents,
-	            filters: newState.filter
-	          }
+	          v: newState
 	        };
 	      default:
 	        return {
