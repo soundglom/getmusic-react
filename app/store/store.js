@@ -4,16 +4,15 @@ import thunk from 'redux-thunk';
 import * as actions from '../actions';
 import rootReducer from '../reducers';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-const initialState = {
-  allEvents: []
-};
+const store = createStore(rootReducer, (applyMiddleware(thunk)));
 
 // Redux props and action connectors
-const mapStateToProps = (state = initialState) => {
+const mapStateToProps = (state) => {
   return {
     allEvents: state.fetchReducer.allEvents,
-    myEvents: [],
+    renderedEvents: state.fetchReducer.renderedEvents,
+    timeFilters: state.fetchReducer.timeFilters,
+    genreFilters: state.fetchReducer.genreFilters,
     search: {
       searchQuery: state.searchReducer.query,
       events: state.searchReducer.events
@@ -27,7 +26,6 @@ const mapStateToProps = (state = initialState) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  // console.log(dispatch)
   return bindActionCreators(actions, dispatch);
 };
 
