@@ -19,12 +19,16 @@ const genreFilterReducer = (state = {}, action) => {
       };
 
       const removeFilter = (arr, i) => {
-        arr.forEach(event => {
+        arr.forEach((event, index, list) => {
           let test = `${event.genre}`.toUpperCase()
                       .indexOf(filter.toUpperCase());
 
           if (test >= 0) {
-            arr.splice(i, 1);
+            if (arr.length === 1) {
+              arr.length = 0;
+            } else {
+              arr.splice(i, 1);
+            }
           }
         });
       };

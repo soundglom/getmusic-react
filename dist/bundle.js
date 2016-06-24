@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2954f92dd92e4062936e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c4ba65adf41dd897a163"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -51713,10 +51713,7 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*eslint no-useless-constructor: 0*/
-	
-	
-	// import Data from '!json!../../data';
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var Events = function (_Component) {
 	  _inherits(Events, _Component);
@@ -51730,19 +51727,8 @@
 	  _createClass(Events, [{
 	    key: 'renderEvents',
 	    value: function renderEvents() {
-	      // console.log(this.props);
 	      var p = this.props;
 	      var test = function test() {
-	        // if (!p.search.events) {
-	        //   return p.allEvents;
-	        // } else if (!p.myEvents) {
-	        //   return p.allEvents;
-	        // }
-	        // if (p.filter.events) {
-	        //   return p.filter.events;
-	        // } else if (p.search.events) {
-	        //   return p.search.events;
-	        // }
 	        if (!p.filteredEvents.length) {
 	          return p.allEvents;
 	        }
@@ -52381,11 +52367,15 @@
 	        };
 	
 	        var removeFilter = function removeFilter(arr, i) {
-	          arr.forEach(function (event) {
+	          arr.forEach(function (event, index, list) {
 	            var test = ('' + event.genre).toUpperCase().indexOf(filter.toUpperCase());
 	
 	            if (test >= 0) {
-	              arr.splice(i, 1);
+	              if (arr.length === 1) {
+	                arr.length = 0;
+	              } else {
+	                arr.splice(i, 1);
+	              }
 	            }
 	          });
 	        };
