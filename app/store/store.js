@@ -10,7 +10,8 @@ const store = createStore(rootReducer, (applyMiddleware(thunk)));
 const mapStateToProps = (state) => {
   return {
     allEvents: state.fetchReducer.allEvents,
-    renderedEvents: state.fetchReducer.renderedEvents,
+    filteredEvents: state.fetchReducer.filteredEvents,
+    currentFilters: state.fetchReducer.currentFilters,
     timeFilters: state.fetchReducer.timeFilters,
     genreFilters: state.fetchReducer.genreFilters,
     search: {

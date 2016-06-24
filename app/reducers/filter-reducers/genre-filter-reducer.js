@@ -3,24 +3,43 @@ import { FILTER_GENRES } from '../../actions/action-types';
 const genreFilterReducer = (state = {}, action) => {
   switch (action.type) {
     case FILTER_GENRES:
-      let newState = {...action.payload};
-      console.log('App State: ', state);
-      console.log('Payload: ', action.payload);
+      let newState = {...action.payload.state};
+      let { filter, prop } = action.payload;
+      let events = newState.allEvents;
 
-      let filteredEvents = newState.state.allEvents.filter((event, i, l) => {
-        let filterTest = `${event[newState.prop]}`.toUpperCase()
-                          .indexOf(newState.filter.toUpperCase());
+      const addFilter = (arr1, arr2) => {
+        arr1.forEach(event => {
+          let test = `${event.genre}`.toUpperCase()
+                      .indexOf(filter.toUpperCase());
 
-        if (filterTest >= 0) {
-          newState.state.myEvents.push(event);
-          return event;
-        }
-      });
-
-      return {
-        events: filteredEvents,
-        filters: newState.filter
+          if (test >= 0) {
+            arr2.push(event);
+          }
+        });
       };
+
+      const removeFilter = (arr, i) => {
+        arr.forEach(event => {
+          let test = `${event.genre}`.toUpperCase()
+                      .indexOf(filter.toUpperCase());
+
+          if (test >= 0) {
+            arr.splice(i, 1);
+          }
+        });
+      };
+
+      if (newState.currentFilters[filter]) {
+        delete newState.currentFilters[filter];
+        removeFilter(newState.filteredEvents);
+      } else {
+        newState.currentFilters[filter] = filter;
+        addFilter(newState.allEvents, newState.filteredEvents);
+      }
+      console.log(newState.currentFilters);
+      console.log(newState);
+
+      return newState;
     default:
       return state;
   }

@@ -23,8 +23,11 @@ class Events extends Component {
       // } else if (p.search.events) {
       //   return p.search.events;
       // }
-      console.log(p.renderedEvents);
-      return p.renderedEvents;
+      if (!p.filteredEvents.length) {
+        return p.allEvents;
+      }
+
+      return p.filteredEvents;
     };
 
     return test().map((event, index) => {

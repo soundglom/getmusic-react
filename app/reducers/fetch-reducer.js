@@ -5,14 +5,17 @@ import createGenres from './libs/genre-data';
 const fetchReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_EVENTS:
-      let events = [...action.payload.data];
 
-      return {
-        allEvents: {...events},
-        renderedEvents: [...events],
-        genreFilters: createGenres(events),
-        timeFilters: createTimes(events)
-      };
+      let newState = {...action.payload.state};
+      let events = [...action.payload.res.data];
+
+      newState.allEvents = [...events];
+      newState.filteredEvents = [];
+      newState.timeFilters = createTimes(events);
+      newState.genreFilters = createGenres(events);
+      newState.currentFilters = {};
+
+      return newState;
     default:
       return state;
   }
