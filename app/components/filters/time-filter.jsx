@@ -27,7 +27,7 @@ class TimeFilter extends Component {
   handleClick(event) {
     let time = event.target.textContent;
 
-    this.props.filterEventsAction(time, 'time', this.props);
+    this.props.filterTimesAction(time, 'time', this.props);
     this.forceUpdate();
   }
   render() {
@@ -41,7 +41,7 @@ TimeFilter.propTypes = {
   genre: shape({
     name: string
   }),
-  filterEventsAction: func
+  filterTimesAction: func
 };
 
 export default connector(TimeFilter);

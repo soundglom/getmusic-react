@@ -9,14 +9,9 @@ const { func } = PropTypes;
 class TopBar extends Component {
   constructor (props) {
     super(props);
-    this.handleRequest = this.handleRequest.bind(this);
   }
   componentWillMount() {
-    this.props.fetchEventsAction();
-  }
-  handleRequest() {
-    console.log('fetched');
-    this.props.fetchEventsAction();
+    this.props.fetchEventsAction(this.props);
   }
   render () {
     return (
@@ -25,9 +20,7 @@ class TopBar extends Component {
           <ul className='dropdown menu' data-dropdown-menu>
             <li className='menu-text'>Site Title</li>
             <li><Link to='/'>Home</Link></li>
-            <li onClick={this.handleRequest}>
-              <Link to='/results' >All Events</Link>
-            </li>
+            <li><Link to='/results' >All Events</Link></li>
           </ul>
         </div>
         <Search />
@@ -37,7 +30,8 @@ class TopBar extends Component {
 }
 
 TopBar.propTypes = {
-  fetchEventsAction: func
+  fetchEventsAction: func,
+  initialStateAction: func
 };
 
 export default connector(TopBar);

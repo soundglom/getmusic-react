@@ -11,10 +11,6 @@ class ResultsView extends Component {
   constructor(props) {
     super(props);
   }
-  componentWillMount() {
-    console.log(this.props);
-    this.props.fetchEventsAction();
-  }
   render() {
     return (
       <div id='results-view'>

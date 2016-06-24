@@ -10,7 +10,7 @@
     "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test",
     "check-cover": "nyc check-coverage --lines 95 --functions 95 --branches 95",
     "prod": "NODE_ENV=production webpack -p --config ./webpack.prod.config.js && node server/server.js",
-    "dev": "NODE_ENV=development webpack && node server/server.js",
+    "dev": "NODE_ENV=development webpack --inline && node server/server.js",
     "mon": "NODE_ENV=development webpack && nodemon server/server.js",
     "start": "node server/server.js"
   },

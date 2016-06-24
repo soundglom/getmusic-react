@@ -4,7 +4,7 @@ import { Accordion, Panel } from 'react-bootstrap';
 import { connector, store } from '../../store/store';
 import genres from '../../../eb-genres.json';
 
-const { string, func, object, shape } = PropTypes;
+const { string, func, object, shape, array } = PropTypes;
 
 class GenreFilter extends Component {
   constructor(props) {
@@ -12,12 +12,13 @@ class GenreFilter extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   renderGenres() {
-    return genres.subcategories.map((genre, index) => {
+    let genres = this.props.genreFilters;
+    return genres.map((genre, index) => {
       return (
         <Panel
           key={index}
           className='filter'
-          header={genre.name}
+          header={genre}
           onClick={this.handleClick}
           eventKey={index.toString()}
         />
@@ -25,9 +26,16 @@ class GenreFilter extends Component {
     });
   }
   handleClick(event) {
-    let genre = event.target.textContent;
+    let el = event.target;
+    let genre = el.textContent;
 
-    this.props.filterEventsAction(genre, 'genre', this.props);
+    if (el.classList.contains('filter-selected')) {
+      el.classList.remove('filter-selected');
+    } else {
+      el.classList.add('filter-selected');
+    }
+
+    this.props.filterGenresAction(genre, 'genre', this.props);
   }
   render() {
     return (
@@ -40,7 +48,8 @@ GenreFilter.propTypes = {
   genre: shape({
     name: string
   }),
-  filterEventsAction: func
+  genreFilters: array,
+  filterGenresAction: func
 };
 
 export default connector(GenreFilter);
