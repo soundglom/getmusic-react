@@ -32,6 +32,9 @@ module.exports = {
   module: {
     loaders: [
       { test: path.join(__dirname, 'app'), loaders: ['react-hot', 'babel-loader'], exclude: /(node_modules|bower_components)/ },
+      // { test: require.resolve("jquery"), loader: "expose?$!expose?jQuery" }
+      { test: /jquery\.js$/, loader: 'expose?$' },
+      { test: /jquery\.js$/, loader: 'expose?jQuery' },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
