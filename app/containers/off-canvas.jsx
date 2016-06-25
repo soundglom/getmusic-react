@@ -12,6 +12,9 @@ class OffCanvas extends Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount() {
+    $(document).foundation();
+  }
   render() {
     return (
       <div className='off-canvas-wrapper black'>
