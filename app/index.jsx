@@ -3,10 +3,10 @@ import './stylesheets/main.scss';
 import React, { Component } from 'react';
 import $ from 'jquery';
 import foundation from 'foundation-sites';
-import 'foundation-sites/js/foundation.core';
-import 'foundation-sites/js/foundation.util.mediaQuery.js';
-import 'foundation-sites/js/foundation.util.triggers.js';
-import 'foundation-sites/js/foundation.util.motion.js';
+// import 'foundation-sites/js/foundation.core';
+// import 'foundation-sites/js/foundation.util.mediaQuery.js';
+// import 'foundation-sites/js/foundation.util.triggers.js';
+// import 'foundation-sites/js/foundation.util.motion.js';
 // import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import { INITIAL_STATE, FETCH_EVENTS } from './actions/action-types';
 import { Router, browserHistory } from 'react-router';
@@ -23,10 +23,10 @@ store.dispatch({ type: INITIAL_STATE, payload: initialState });
 
 export default class App extends Component {
   componentWillMount() {
-    $(document).foundation();
   }
   componentDidMount() {
-    $('#offCanvas').foundation();
+    $(document).foundation();
+    // $('#offCanvas').foundation();
   }
   render () {
     return (

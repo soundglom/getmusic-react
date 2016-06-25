@@ -1,3 +1,5 @@
+
+
 $offcanvas-size-vertical: 1000px;
 $offcanvas-background: #000000;
 $offcanvas-color: isitlight($offcanvas-background);
@@ -11,7 +13,7 @@ $offcanvas-color: isitlight($offcanvas-background);
 .off-canvas.position-left {
   // Sidebar color
   height: 100vh;
-  background-color: $black;
+  // background-color: $black;
 }
 
 .vertical, .menu > li {
