@@ -1,10 +1,10 @@
-#app {
-  @import 'foundation-sites/scss/foundation';
+@import 'foundation-sites/scss/foundation';
 
-  // include all modules of foundation
-  @include foundation-everything;
-  @import 'components/all';
-  @import 'containers/all';  
+// include all modules of foundation
+@include foundation-everything;
+@import 'components/all';
+@import 'containers/all';  
+#app {
   
 }
 

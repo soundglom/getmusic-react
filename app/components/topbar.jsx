@@ -1,6 +1,7 @@
-/*eslint no-useless-constructor: 0*/
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import $ from 'jquery';
+import foundation from 'foundation-sites';
 import Search from './search';
 import { connector } from '../store/store';
 
@@ -21,6 +22,7 @@ class TopBar extends Component {
             <li className='menu-text'>Site Title</li>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/results' >All Events</Link></li>
+            <li><a data-toggle='offCanvas'>Open Menu</a></li>
           </ul>
         </div>
         <Search />
