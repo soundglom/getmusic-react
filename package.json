@@ -116,6 +116,7 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.0.1",
     "sass-loader": "^3.2.0",
+    "semantic-ui": "^2.1.8",
     "stylus": "^0.54.5",
     "webpack": "^1.13.1",
     "what-input": "^2.0.1"

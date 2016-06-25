@@ -1,25 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import $ from 'jquery';
 import foundation from 'foundation-sites';
+import { connector } from '../store/store';
 import TopBar from '../components/topbar';
-import 'semantic-ui/dist/components/form';
-// import Foundation from 'foundation-sites';
+import SideBar from './sidebar';
+import SideBarTwo from './sidebar2';
+import Events from './events';
+import 'foundation-sites/js/foundation.offCanvas';
 
-export default class Landing extends Component {
+class OffCanvas extends Component {
   constructor(props) {
     super(props);
-    this.state = { isRevealed: false };
-    this.handleClick = this.handleClick.bind(this);
-  }
-  onComponentWillMount() {
-    this.bar = $('#offCanvas').foundation();
-  }
-  handleClick(event, trigger) {
-    const bar = $('#offCanvas').foundation();
-    console.log('I was clicked!');
-    console.log(bar.foundation());
-    this.setState({ isRevealed: !this.state.isRevealed });
-    // console.dir($('#offCanvas').foundation('toggle', event, this.state.isRevealed));
   }
   render() {
     return (
@@ -47,10 +38,12 @@ export default class Landing extends Component {
           <div className='off-canvas-content' data-off-canvas-content>
             {/* -- Page content-- */}
             <TopBar />
-            <h1 onClick={this.handleClick}>Landing Page</h1>
+            <Events />
           </div>
         </div>
       </div>
     );
   }
 }
+
+export default connector(OffCanvas);
