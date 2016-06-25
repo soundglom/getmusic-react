@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b03590da97251d045920"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "61c9b4459be1ba9edd34"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -71882,17 +71882,18 @@
 	  }
 	
 	  _createClass(Landing, [{
-	    key: 'onComponentWillMount',
-	    value: function onComponentWillMount() {
-	      this.bar = (0, _jquery2.default)('#offCanvas').foundation();
+	    key: 'onComponentDidMount',
+	    value: function onComponentDidMount() {
+	      // const bar = $('#offCanvas').foundation();
+	      // bar.foundation();
 	    }
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(event, trigger) {
-	      var bar = (0, _jquery2.default)('#offCanvas').foundation();
-	      console.log('I was clicked!');
-	      console.log(bar.foundation());
-	      this.setState({ isRevealed: !this.state.isRevealed });
+	      (0, _jquery2.default)('#offCanvas').foundation();
+	      // console.log('I was clicked!');
+	      // console.log(bar.foundation());
+	      // this.setState({ isRevealed: !this.state.isRevealed });
 	      // console.dir($('#offCanvas').foundation('toggle', event, this.state.isRevealed));
 	    }
 	  }, {
@@ -71981,7 +71982,7 @@
 	            _react2.default.createElement(_topbar2.default, null),
 	            _react2.default.createElement(
 	              'h1',
-	              { onClick: this.handleClick },
+	              { onClick: this.handleClick, 'data-toggle': 'offCanvas' },
 	              'Landing Page'
 	            )
 	          )
@@ -72345,6 +72346,11 @@
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      (0, _jquery2.default)(document).foundation();
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      (0, _jquery2.default)('#offCanvas').foundation();
 	    }
 	  }, {
 	    key: 'render',
