@@ -14,9 +14,9 @@ class OffCanvas extends Component {
   }
   render() {
     return (
-      <div className='off-canvas-wrapper'>
-        <div className='off-canvas-wrapper-inner' data-off-canvas-wrapper>
-          <div className='off-canvas position-left' id='offCanvas' data-off-canvas>
+      <div className='off-canvas-wrapper black'>
+        <div className='off-canvas-wrapper-inner black' data-off-canvas-wrapper>
+          <div className='off-canvas position-left black' id='offCanvas' data-off-canvas>
 
             {/* -- Close button --> */}
             <button className='close-button' aria-label='Close menu' type='button' data-close>
@@ -35,7 +35,7 @@ class OffCanvas extends Component {
 
           </div>
 
-          <div className='off-canvas-content' data-off-canvas-content>
+          <div className='off-canvas-content black' data-off-canvas-content>
             {/* -- Page content-- */}
             <TopBar />
             <Events />

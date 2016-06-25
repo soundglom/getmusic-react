@@ -1,8 +1,20 @@
-#side-bar {
-  height: 100vh;
-  border: solid 2px black;
+$offcanvas-size-vertical: 1000px;
+$offcanvas-background: #000000;
+$offcanvas-color: isitlight($offcanvas-background);
+
+
+.off-canvas-wrapper-inner::after {
+  // Sidebar height
+  height: 100vh; // This has to be set as well as the .off-canvas
 }
 
-.drop-down {
-  z-index: 1000;
+.off-canvas.position-left {
+  // Sidebar color
+  height: 100vh;
+  background-color: $black;
+}
+
+.vertical, .menu > li {
+  // sidebar inner menu
+  // Li elements in the vertical menu
 }
