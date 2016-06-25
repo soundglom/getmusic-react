@@ -6,7 +6,7 @@ export default class Landing extends Component {
     super(props);
   }
   render() {
-    console.log(this.props);
+    
     return (
       <div id='landing'>
         <div className='off-canvas-wrapper'>
