@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6a769f8cb8dda4e345f4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ca6bcc59727241a173f2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -70464,12 +70464,15 @@
 	
 	      var genres = this.props.genreFilters;
 	      return genres.map(function (genre, index) {
-	        return _react2.default.createElement(_reactBootstrap.Panel, {
+	        return _react2.default.createElement('li', {
 	          key: index,
-	          className: 'filter',
-	          header: genre,
+	          className: 'genre-filter',
 	          onClick: _this2.handleClick,
-	          eventKey: index.toString()
+	          children: _react2.default.createElement(
+	            'a',
+	            { href: '#' },
+	            genre
+	          )
 	        });
 	      });
 	    }
@@ -70490,7 +70493,16 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(_reactBootstrap.Accordion, { children: this.renderGenres() });
+	      return _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          'a',
+	          null,
+	          'Genres'
+	        ),
+	        _react2.default.createElement('ul', { className: 'vertical accordion menu', children: this.renderGenres() })
+	      );
 	    }
 	  }]);
 	
@@ -70507,6 +70519,16 @@
 	
 	exports.default = (0, _store.connector)(GenreFilter);
 	
+	/*
+	<Panel
+	  key={index}
+	  className='filter'
+	  header={genre}
+	  onClick={this.handleClick}
+	  eventKey={index.toString()}
+	/>
+	*/
+
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(16); if (makeExportsHot(module, __webpack_require__(1))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "genre-filter.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)(module)))
 
@@ -70763,31 +70785,6 @@
 	  return Landing;
 	}(_react.Component);
 	
-	/* <li>
-	            <a>Item 5</a>
-	            <ul class='submenu menu vertical accordion' data-submenu='accordion'>
-	              <li class='accordion-item is-active' data-accordion-item>
-	                <a href='#' class='accordion-title'>Accordion 1</a>
-	                <div class='accordion-content' data-tab-content>
-	                  I would start
-	                </div>
-	              </li>
-	              <li class='accordion-item ' data-accordion-item>
-	                <a href='#' class='accordion-title">Accordion 2</a>
-	                <div class="accordion-content" data-tab-content>
-	                  I would start #2
-	                </div>
-	              </li>
-	              <li class="accordion-item " data-accordion-item>
-	                <a href="#" class="accordion-title">Accordion 3</a>
-	                <div class="accordion-content" data-tab-content>
-	                  I would start #3
-	                </div>
-	              </li>
-	            </ul>
-	          </li> */
-	
-	
 	exports.default = Landing;
 	
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(16); if (makeExportsHot(module, __webpack_require__(1))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "landing.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
@@ -70837,6 +70834,10 @@
 	
 	var _events2 = _interopRequireDefault(_events);
 	
+	var _genreFilter = __webpack_require__(671);
+	
+	var _genreFilter2 = _interopRequireDefault(_genreFilter);
+	
 	__webpack_require__(390);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -70864,6 +70865,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'off-canvas-wrapper black' },
@@ -70884,14 +70886,64 @@
 	            ),
 	            _react2.default.createElement(
 	              'ul',
-	              { className: 'vertical menu' },
+	              { className: 'vertical menu', 'data-drilldown': true },
+	              _react2.default.createElement(_genreFilter2.default, null),
 	              _react2.default.createElement(
 	                'li',
 	                null,
 	                _react2.default.createElement(
 	                  'a',
-	                  { href: '#' },
-	                  'Foundation'
+	                  null,
+	                  'Item 2'
+	                ),
+	                _react2.default.createElement(
+	                  'ul',
+	                  { className: 'vertical menu' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Item 2A'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Item 2B'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Item 2C'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Item 2D'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Item 2E'
+	                    )
+	                  )
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -70899,44 +70951,57 @@
 	                null,
 	                _react2.default.createElement(
 	                  'a',
-	                  { href: '#' },
-	                  'Dot'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
+	                  null,
+	                  'Item 3'
+	                ),
 	                _react2.default.createElement(
-	                  'a',
-	                  { href: '#' },
-	                  'ZURB'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { href: '#' },
-	                  'Com'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { href: '#' },
-	                  'Slash'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  'a',
-	                  { href: '#' },
-	                  'Sites'
+	                  'ul',
+	                  { className: 'vertical menu' },
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Item 3A'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Item 3B'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Item 3C'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Item 3D'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Item 3E'
+	                    )
+	                  )
 	                )
 	              )
 	            )
