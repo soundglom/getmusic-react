@@ -25,6 +25,9 @@ export default class App extends Component {
   componentWillMount() {
     $(document).foundation();
   }
+  componentDidMount() {
+    $('#offCanvas').foundation();
+  }
   render () {
     return (
       <Provider store={store}>
