@@ -5,7 +5,7 @@ $offcanvas-background: #000000;
 $offcanvas-color: isitlight($offcanvas-background);
 
 .off-canvas-wrapper {
-  
+  background-image: url('./WootWood.png');
 }
 .off-canvas-wrapper-inner::after {
   // Sidebar height
