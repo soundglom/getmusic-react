@@ -19,7 +19,7 @@ class TopBar extends Component {
       <div className='top-bar' id='example-menu'>
         <div className='top-bar-left'>
           <ul className='dropdown menu' data-dropdown-menu>
-            <li className='menu-text'>Site Title</li>
+            <li className='menu-text top-bar-title'><strong>GetMusicLive</strong></li>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/results' >All Events</Link></li>
             <li><a data-toggle='offCanvas'>Open Menu</a></li>

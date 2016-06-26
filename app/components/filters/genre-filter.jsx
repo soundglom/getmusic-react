@@ -17,7 +17,7 @@ class GenreFilter extends Component {
       return (
         <li
           key={index}
-          className='genre-filter'
+          className='genre-filter filter'
           onClick={this.handleClick}
           children={<a href='#'>{genre}</a>}
         />

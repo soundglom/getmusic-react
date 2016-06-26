@@ -7,6 +7,7 @@ import SideBar from './sidebar';
 import SideBarTwo from './sidebar2';
 import Events from './events';
 import GenreFilter from '../components/filters/genre-filter';
+import TimeFilter from '../components/filters/time-filter';
 import 'foundation-sites/js/foundation.offCanvas';
 
 class OffCanvas extends Component {
@@ -19,20 +20,19 @@ class OffCanvas extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className='off-canvas-wrapper black'>
-        <div className='off-canvas-wrapper-inner black' data-off-canvas-wrapper>
-          <div className='off-canvas position-left black' id='offCanvas' data-off-canvas>
+      <div className='off-canvas-wrapper'>
+        <div className='off-canvas-wrapper-inner' data-off-canvas-wrapper>
+          <div className='off-canvas position-left reveal-for-large' id='offCanvas' data-off-canvas>
 
             {/* -- Close button --> */}
-            <button className='close-button' aria-label='Close menu' type='button' data-close>
-              <span aria-hidden='true'>&times;</span>
-            </button>
 
             {/*  -- Menu -->  */}
             <ul className='vertical menu' data-drilldown>
+              <li className='list-header header-text' id='side-bar'><strong>Options</strong></li>
               <GenreFilter />
+              <TimeFilter />
               <li>
-                <a>Item 2</a>
+                <a>Venues</a>
                 <ul className='vertical menu'>
                   <li><a href='#'>Item 2A</a></li>
                   <li><a href='#'>Item 2B</a></li>
@@ -42,7 +42,7 @@ class OffCanvas extends Component {
                 </ul>
               </li>
               <li>
-                <a>Item 3</a>
+                <a>Artists</a>
                 <ul className='vertical menu'>
                   <li><a href='#'>Item 3A</a></li>
                   <li><a href='#'>Item 3B</a></li>
@@ -52,9 +52,7 @@ class OffCanvas extends Component {
                 </ul>
               </li>
             </ul>
-
           </div>
-
           <div className='off-canvas-content black' data-off-canvas-content>
             {/* -- Page content-- */}
             <TopBar />
