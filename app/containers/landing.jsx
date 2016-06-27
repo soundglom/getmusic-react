@@ -9,7 +9,7 @@ export default class Landing extends Component {
     return (
       <div id='landing'>
         <TopBar />
-        <h1>This is the landing page</h1>
+        <h1 id='landing-text'>This is the landing page</h1>
       </div>
     );
   }
