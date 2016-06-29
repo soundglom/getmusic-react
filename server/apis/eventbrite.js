@@ -1,3 +1,4 @@
+require('dotenv').config();
 const fetch = require('../middleware/api-fetch');
 
 // const EVENTBRITE_QUERY = {
@@ -9,8 +10,9 @@ const fetch = require('../middleware/api-fetch');
 // };
 
 const EVENTBRITE_URL = 'https://www.eventbriteapi.com/v3/events/search/?sort_by=date&venue.city=San+Francisco&venue.region=CA&categories=103&expand=venue&token=';
-const EVENTBRITE_KEY = process.env.EVENTBRITE;
+const EVENTBRITE_KEY = process.env.EVENTBRITE_KEY;
 const url = `${EVENTBRITE_URL}${EVENTBRITE_KEY}`;
+
 
 module.exports = { 
   fetch: fetch(url),
