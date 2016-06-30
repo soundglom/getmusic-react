@@ -1,6 +1,5 @@
 const env = process.env.NODE_ENV || 'development';
 if (env === 'development') {
-  console.log('Dev environment')
   require('dotenv').config();  
 }
 const axios = require('axios');

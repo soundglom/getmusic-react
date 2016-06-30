@@ -11,7 +11,6 @@ module.exports = {
     publicPath: '/dist/'
 
   },
-  devtool: 'cheap-module-source-map',
   resolve: {
     extensions: ['', '.js', '.jsx', '.json'],
     alias: {
