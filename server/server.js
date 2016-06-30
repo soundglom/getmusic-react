@@ -9,6 +9,7 @@ const ebFetch = require('./apis/eventbrite/request');
 const publicPath = '../dist';
 const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
+// const env = process.env.NODE_ENV || 'development';
 
 const formattedEvents = [];
 
@@ -18,8 +19,8 @@ app.use(bodyParser.json());
 app.use(ebFetch(formattedEvents));
 
 if (env === 'development') {
+  console.log('Environment: ', env);
   require('./middleware/devserver')(app);
-  console.log('We\'re in development mode.');
 }
 
 app.use('/api/data', (req, res, next) => {
