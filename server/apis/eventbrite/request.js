@@ -1,9 +1,12 @@
-require('dotenv').config();  
-
+const env = process.env.NODE_ENV || 'development';
+if (env === 'development') {
+  console.log('Dev environment')
+  require('dotenv').config();  
+}
 const axios = require('axios');
 const dataFormat = require('./data-format.js');
+const EVENTBRITE_KEY = process.env.EVENTBRITE_KEY;
 const EVENTBRITE_URL = 'https://www.eventbriteapi.com/v3/events/search/?sort_by=date&venue.city=San+Francisco&venue.region=CA&categories=103&expand=venue&token=';
-const EVENTBRITE_KEY = process.env.EVENTBRITE;
 
 
 // const EVENTBRITE_QUERY = {
