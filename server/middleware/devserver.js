@@ -2,9 +2,9 @@ const webpack = require('webpack');
 const config = require('./../../webpack.config.js');
 const devMiddleware = require('webpack-dev-middleware');
 const hotMiddleware = require('webpack-hot-middleware');
-
 const compiler = webpack(config);
 
+//////////////////////////////////////////////////
 const webpackMiddleware = (server) => {
   server.use(devMiddleware(compiler, {
     publicPath: config.output.publicPath,

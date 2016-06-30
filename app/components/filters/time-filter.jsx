@@ -15,11 +15,11 @@ class TimeFilter extends Component {
     let times = ['Morning', 'Afternoon', 'Evening'];
     return times.map((time, index) => {
       return (
-        <Panel
+        <li
           key={index}
-          className='filter'
-          header={time}
+          className='time-filter filter'
           onClick={this.handleClick}
+          children={<a href='#'>{time}</a>}
         />
       );
     });
@@ -32,7 +32,10 @@ class TimeFilter extends Component {
   }
   render() {
     return (
-      <Accordion children={this.renderTimes()} />
+      <li>
+        <a>Times</a>
+        <ul className='vertical accordion menu' children={this.renderTimes()} />
+      </li>
     );
   }
 }

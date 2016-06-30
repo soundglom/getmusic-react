@@ -1,48 +1,12 @@
-// import React, { Component, PropTypes } from 'react';
-// import { connector } from '../store/store';
-// import TopBar from '../components/topbar';
-// import SideBar from './sidebar';
-// import SideBarTwo from './sidebar2';
-
-// const { func } = PropTypes;
-
-// class ResultsView extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
-//   render() {
-//     return (
-//       <div id='results-view'>
-//         <TopBar />
-//         <SideBarTwo />
-//         <Events />
-//       </div>
-//     );
-//   }
-// }
-
-// ResultsView.propTypes = {
-//   fetchEventsAction: func
-// };
-
-// export default connector(ResultsView);
-
-/* ----------------- */
-
 import React, { Component } from 'react';
-import $ from 'jquery';
-import foundation from 'foundation-sites';
-import TopBar from '../components/topbar';
-import Events from './events';
+import TopBar from '../../components/topbar';
 
 export default class Landing extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
-    $(document).foundation();
-  }
   render() {
+    
     return (
       <div id='landing'>
         <div className='off-canvas-wrapper'>
@@ -95,7 +59,6 @@ export default class Landing extends Component {
             <div className='off-canvas-content' data-off-canvas-content>
               <TopBar />
               {/* -- Page content-- */}
-              <Events />
             </div>
           </div>
         </div>

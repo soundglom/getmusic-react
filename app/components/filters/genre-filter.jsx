@@ -15,12 +15,11 @@ class GenreFilter extends Component {
     let genres = this.props.genreFilters;
     return genres.map((genre, index) => {
       return (
-        <Panel
+        <li
           key={index}
-          className='filter'
-          header={genre}
+          className='genre-filter filter'
           onClick={this.handleClick}
-          eventKey={index.toString()}
+          children={<a href='#'>{genre}</a>}
         />
       );
     });
@@ -39,7 +38,10 @@ class GenreFilter extends Component {
   }
   render() {
     return (
-      <Accordion children={this.renderGenres()} />
+      <li>
+        <a>Genres</a>
+        <ul className='vertical accordion menu' children={this.renderGenres()} />
+      </li>
     );
   }
 }
@@ -53,3 +55,13 @@ GenreFilter.propTypes = {
 };
 
 export default connector(GenreFilter);
+
+/*
+<Panel
+  key={index}
+  className='filter'
+  header={genre}
+  onClick={this.handleClick}
+  eventKey={index.toString()}
+/>
+*/

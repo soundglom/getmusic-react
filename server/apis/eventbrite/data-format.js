@@ -1,7 +1,7 @@
 const R = require('ramda');
 
 // Local genres file
-const genreData = require('../../eb-genres.json').subcategories;
+const genreData = require('../../../eb-genres.json').subcategories;
 
 // Create a short description
 const descrFormat = (descr) => {
