@@ -1,10 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-// import $ from 'jquery';
-// import foundation from 'foundation-sites';
 import Search from '../components/search';
 import { connector } from '../store/store';
-import logo from './white.png';
 
 const { func } = PropTypes;
 
