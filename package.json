@@ -25,7 +25,7 @@
     "url": "https://github.com/Shinobi881/getmusic-react/issues"
   },
   "engines": {
-    "node": ">=6.1.0"
+    "node": ">=6.2.2"
   },
   "homepage": "https://github.com/Shinobi881/getmusic-react#readme",
   "devDependencies": {
