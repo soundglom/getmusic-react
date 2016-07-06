@@ -1,38 +1,7 @@
-// import React, { Component, PropTypes } from 'react';
-// import { connector } from '../store/store';
-// import TopBar from '../components/topbar';
-// import SideBar from './sidebar';
-// import SideBarTwo from './sidebar2';
-
-// const { func } = PropTypes;
-
-// class ResultsView extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
-//   render() {
-//     return (
-//       <div id='results-view'>
-//         <TopBar />
-//         <SideBarTwo />
-//         <Events />
-//       </div>
-//     );
-//   }
-// }
-
-// ResultsView.propTypes = {
-//   fetchEventsAction: func
-// };
-
-// export default connector(ResultsView);
-
-/* ----------------- */
-
 import React, { Component } from 'react';
 import $ from 'jquery';
 import foundation from 'foundation-sites';
-import TopBar from '../components/topbar';
+import TopBar from './topbar';
 import Events from './events';
 
 export default class Landing extends Component {

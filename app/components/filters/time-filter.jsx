@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
-import { Accordion, Panel } from 'react-bootstrap';
+// import { Accordion, Panel } from 'react-bootstrap';
 import { connector, store } from '../../store/store';
 
 const { string, func, object, shape } = PropTypes;
