@@ -36,7 +36,7 @@ module.exports = {
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.scss$/, loaders: ['style', 'css', 'resolve-url', 'sass?sourceMap'] },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'url?file-loader?limit=10000!img?progressive=true' },
+      { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'url-loader?file-loader?limit=50000!img?progressive=true' }
     ],
     preLoaders: [
       { test: /\jsx?$/, loader: 'eslint-loader', exclude: /node_modules/ }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TopBar from '../components/topbar';
+import TopBar from './topbar';
 
 export default class Landing extends Component {
   constructor(props) {

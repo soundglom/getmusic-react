@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TopBar from '../components/topbar';
+import TopBar from './topbar';
 import Event from '../components/event';
 import { connector } from '../store/store';
 

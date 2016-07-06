@@ -32,7 +32,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import foundation from 'foundation-sites';
-import TopBar from '../components/topbar';
+import TopBar from './topbar';
 import Events from './events';
 
 export default class Landing extends Component {

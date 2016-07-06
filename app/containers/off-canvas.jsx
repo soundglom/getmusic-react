@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import $ from 'jquery';
 import foundation from 'foundation-sites';
 import { connector } from '../store/store';
-import TopBar from '../components/topbar';
+import TopBar from './topbar';
 import SideBar from './sidebar';
 import SideBarTwo from './sidebar2';
 import Events from './events';

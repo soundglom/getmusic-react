@@ -25,6 +25,9 @@ const ebFetch = (arr) => {
       .then((response) => {
         arr.length = 0;
         dataFormat(response.data.events, arr);
+      })
+      .catch((err) => {
+        console.log(err);
       });
     next();
   };
