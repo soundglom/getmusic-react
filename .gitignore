@@ -15,4 +15,5 @@ dist/*.eot
 dist/*.woff2
 dist/*.svg
 dist/*.png
+dist/*.jpg
 
