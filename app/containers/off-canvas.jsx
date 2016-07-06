@@ -6,7 +6,6 @@ import TopBar from './topbar';
 import Events from './events';
 import GenreFilter from '../components/filters/genre-filter';
 import TimeFilter from '../components/filters/time-filter';
-import 'foundation-sites/js/foundation.offCanvas';
 
 class OffCanvas extends Component {
   constructor(props) {
