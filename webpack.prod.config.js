@@ -27,19 +27,21 @@ module.exports = {
       }
     }),
     new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
     }),
-    new webpack.optimize.AggressiveMergingPlugin()
   ],
   module: {
     loaders: [
       { test: /\.jsx?$/, loader: 'babel?' + JSON.stringify(babelSettings) },
       { test: /node_modules\/(jws|jwa|qs)\/.*\.js$/, loaders: ['babel?optional[]=runtime&stage=0'] },
-      { test: /jquery\.js$/, loader: 'expose?$' },
-      { test: /jquery\.js$/, loader: 'expose?jQuery' },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.scss$/, loaders: ['style', 'css', 'resolve-url', 'sass?sourceMap'] },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
