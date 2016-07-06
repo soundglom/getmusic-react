@@ -3,8 +3,6 @@ import $ from 'jquery';
 import foundation from 'foundation-sites';
 import { connector } from '../store/store';
 import TopBar from './topbar';
-import SideBar from './sidebar';
-import SideBarTwo from './sidebar2';
 import Events from './events';
 import GenreFilter from '../components/filters/genre-filter';
 import TimeFilter from '../components/filters/time-filter';
