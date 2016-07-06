@@ -1,6 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const babelSettings = {
+  extends: path.join(__dirname, '/.babelrc')
+};
 
 module.exports = {
   context: __dirname,
@@ -24,24 +27,21 @@ module.exports = {
       }
     }),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
     }),
-    new webpack.optimize.AggressiveMergingPlugin()
-  ], 
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+  ],
   module: {
     loaders: [
-      { test:  /\.jsx?$/, loader: 'babel', query: { presets: [
-          'babel-preset-es2015',
-          'babel-preset-react',
-          'babel-preset-stage-0',
-        ].map(require.resolve),
-      } },
-      { test: /node_modules\/(jws|jwa|qs)\/.*\.js$/, loaders: ["babel?optional[]=runtime&stage=1"] },
-      { test: /jquery\.js$/, loader: 'expose?$' },
-      { test: /jquery\.js$/, loader: 'expose?jQuery' },
+      { test: /\.jsx?$/, loader: 'babel?' + JSON.stringify(babelSettings) },
+      { test: /node_modules\/(jws|jwa|qs)\/.*\.js$/, loaders: ['babel?optional[]=runtime&stage=0'] },
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.scss$/, loaders: ['style', 'css', 'resolve-url', 'sass?sourceMap'] },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
@@ -55,5 +55,5 @@ module.exports = {
   },
   sassLoader: {
     includePaths: [path.resolve(__dirname, 'node_modules')]
-  }   
-}
+  }
+};
