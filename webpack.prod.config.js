@@ -33,7 +33,12 @@ module.exports = {
   ], 
   module: {
     loaders: [
-      { test:  /\.jsx?$/, loader: 'babel' },
+      { test:  /\.jsx?$/, loader: 'babel', query: { presets: [
+          'babel-preset-es2015',
+          'babel-preset-react',
+          'babel-preset-stage-0',
+        ].map(require.resolve),
+      } },
       { test: /node_modules\/(jws|jwa|qs)\/.*\.js$/, loaders: ["babel?optional[]=runtime&stage=1"] },
       { test: /jquery\.js$/, loader: 'expose?$' },
       { test: /jquery\.js$/, loader: 'expose?jQuery' },
