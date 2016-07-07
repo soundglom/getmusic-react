@@ -13,7 +13,7 @@
     "prod-serve": "NODE_ENV=production node server/server.js",
     "dev-build": "webpack --inline",
     "dev-serve": "NODE_ENV=developemt node server/server.js",
-    "prod": "npm run prod-build && npm run prod-serve",
+    "prod": "webpack -p --config ./webpack.prod.config.js && nodemon server/server.js",
     "dev": "npm run dev-build && npm run dev-serve",
     "mon": "NODE_ENV=development webpack && nodemon server/server.js",
     "start": "node server/server.js"
