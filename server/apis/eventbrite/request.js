@@ -18,7 +18,7 @@ const EVENTBRITE_URL = 'https://www.eventbriteapi.com/v3/events/search/?sort_by=
 // };
 
 const eventbrite = `${EVENTBRITE_URL}${EVENTBRITE_KEY}`;
-
+console.log(eventbrite);
 const ebFetch = (arr) => {
   return (req, res, next) => {
     axios.get(eventbrite)

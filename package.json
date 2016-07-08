@@ -11,10 +11,10 @@
     "check-cover": "nyc check-coverage --lines 95 --functions 95 --branches 95",
     "prod-build": "webpack -p --config ./webpack.prod.config.js",
     "prod-serve": "NODE_ENV=production node server/server.js",
-    "dev-build": "webpack --inline",
-    "dev-serve": "NODE_ENV=developemt node server/server.js",
+    "dev-build": "webpack",
+    "dev-serve": "NODE_ENV=development node server/server.js",
     "prod": "node server/server.js",
-    "postinstall": "npm run prod-build"
+    "postinstall": "npm run prod-build",
     "dev": "npm run dev-build && npm run dev-serve",
     "mon": "NODE_ENV=development webpack && nodemon server/server.js",
     "start": "node server/server.js"
@@ -49,13 +49,13 @@
     "css-loader": "^0.23.1",
     "dotenv": "^2.0.0",
     "enzyme": "^2.2.0",
-    "eslint": "^2.9.0",
-    "eslint-config-semistandard": "^6.0.1",
+    "eslint": "^2.13.1",
+    "eslint-config-semistandard": "^6.0.2",
     "eslint-config-standard": "^5.3.0",
     "eslint-config-standard-react": "^2.5.0",
-    "eslint-loader": "^1.4.0",
+    "eslint-loader": "^1.4.1",
     "eslint-plugin-promise": "^1.1.0",
-    "eslint-plugin-react": "^5.0.1",
+    "eslint-plugin-react": "^5.2.2",
     "eslint-plugin-standard": "^1.3.2",
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -87,7 +87,7 @@
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "^1.14.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.12.1"
   },
   "dependencies": {
     "autoprefixer": "^6.3.6",
