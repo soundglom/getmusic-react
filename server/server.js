@@ -5,10 +5,13 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 
 const app = express();
-const ebFetch = require('./apis/eventbrite/request');
+const ebStuff = require('./apis/eventbrite/request');
+const ebFetch = ebStuff.ebFetch;
+const repeatRequest = ebStuff.repeatRequest;
 const publicPath = '../dist';
 const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'development';
+console.log(repeatRequest);
 // const env = process.env.NODE_ENV || 'development';
 
 const formattedEvents = [];
@@ -17,6 +20,7 @@ app.use(express.static('dist/'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(ebFetch(formattedEvents));
+// app.use(repeatRequest());
 
 if (env === 'development') {
   console.log('Environment: ', env);
